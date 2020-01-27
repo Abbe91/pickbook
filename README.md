@@ -1,5 +1,4 @@
-## Grupp Medhavdare: Rezan Turan,
-
+## Grupp 4 Medhavdare: Rezan Turan,
 # Kravspecifikation på projektet:
 
 • Alla sidor skall vara responsiva. (G)
