@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2020 at 11:11 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Generation Time: Feb 07, 2020 at 05:45 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.1.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,6 @@ CREATE TABLE `categories` (
 --
 
 CREATE TABLE `customers` (
-  `customerID` int(12) NOT NULL,
   `fulName` varchar(70) NOT NULL,
   `IsAdmin` tinyint(1) NOT NULL,
   `email` text NOT NULL,
@@ -54,6 +53,13 @@ CREATE TABLE `customers` (
   `country` varchar(25) NOT NULL,
   `Password` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`fulName`, `IsAdmin`, `email`, `phone`, `adress`, `postNu`, `ZIPcode`, `city`, `country`, `Password`) VALUES
+('samer', 0, 'samer@gmail.com', 2020202020, 0, 123456, 33000, 'london', 'sweden', 'be82c4b4bf743dcbed2660bb12df888ed7720177');
 
 -- --------------------------------------------------------
 
@@ -137,12 +143,6 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`categorytID`);
 
 --
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`customerID`);
-
---
 -- Indexes for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
@@ -169,12 +169,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categories`
   MODIFY `categorytID` int(12) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `customers`
---
-ALTER TABLE `customers`
-  MODIFY `customerID` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
