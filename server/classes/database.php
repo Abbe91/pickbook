@@ -3,7 +3,7 @@
 class Database {
 
     function __construct() {
-        $dsn = 'mysql:host=localhost;dbname=PICKBOOK;';
+        $dsn = 'mysql:host=localhost;dbname=pickbook;';
         $user = 'root';
         $password = 'root';
 

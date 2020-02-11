@@ -2,14 +2,15 @@
 
 try {
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-
         if($_POST["action"] == "add") { 
-            include_once("./../handlers/productHandler.php");              
-            echo json_encode(add(
+            include_once("./../handlers/productHandler.php"); 
+              echo json_encode(add(
+                $_POST["product_name"],
                 $_POST["description"],
                 $_POST["quantity"],
-                $_POST["unitPrice"],
-                $_POST["discount"]
+                $_POST["unit_price"],
+                $_POST["discount"],
+                $_POST["image"]
             ));
             exit;
 
