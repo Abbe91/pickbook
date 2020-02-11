@@ -1,18 +1,21 @@
 <?php
 
-include "customers.php";
+include "users.php";
 
 $email=$_POST["email"];
-$name=$_POST["name"];
+$fulName=$_POST["name"];
 $phone=$_POST["phone"];
-$address=$_POST["address"];
-$postnumber=$_POST["postnumber"];
-$zipcode=$_POST["zipcode"];
+$adress=$_POST["address"];
+$postNu=$_POST["postnumber"];
+$ZIPcode=$_POST["zipcode"];
 $city=$_POST["city"];
 $country=$_POST["country"];
-$password=$_POST["password"];
+$Password=$_POST["password"];
+$IsAdmin=0;
+$is_news_letter=0;
+$cus1=new User(0,$fulName,$IsAdmin,$email,$phone,$adress,$postNu,$ZIPcode,$city,$country,$Password,$is_news_letter);
 
-$cus1=new Customer($email,$name,$phone,$postnumber,$zipcode,$city,$country,$password,$address);
 $cus1->register();
+
 echo "Registered";
 ?>
