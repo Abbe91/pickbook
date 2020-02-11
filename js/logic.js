@@ -19,17 +19,21 @@ function getAllProduct() {
 }
 
 function insertProduct() {
+    let insertProductName = document.getElementsByName("insertProductName")[0].value
     let insertDescription = document.getElementsByName("insertDescription")[0].value
     let insertQuantity = document.getElementsByName("insertQuantity")[0].value
     let insertUnitPrice = document.getElementsByName("insertUnitPrice")[0].value
     let insertDiscount = document.getElementsByName("insertDiscount")[0].value
+    let insertImage = document.getElementsByName("productImage")[0].value
 
     var data = new FormData()
     data.append("action", "add");
+    data.append("product_name", insertProductName);
     data.append("description", insertDescription);
     data.append("quantity", insertQuantity);
-    data.append("unitPrice", insertUnitPrice);
+    data.append("unit_price", insertUnitPrice);
     data.append("discount", insertDiscount);
+    data.append("image", insertImage);
 
     makeRequest('./../server/recievers/productReciever.php', "POST", data, (result)=>{
         console.log(result)
@@ -57,6 +61,3 @@ function deleteAllProduct() {
         console.log(result)
     })
 }
-
-
-

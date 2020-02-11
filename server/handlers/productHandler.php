@@ -1,14 +1,16 @@
 <?php
 
-function add($Description,$Quantity,$UnitPrice,$Discount) {
+function add($product_name,$description,$quantity,$unit_price,$discount,$image) {
     include_once("./../classes/database.php");
     $database = new Database();
-    $query = $database->connection->prepare("INSERT INTO product (Description,Quantity,UnitPrice,Discount) VALUES (:description, :quantity, :unitPrice, :discount)");
+    $query = $database->connection->prepare("INSERT INTO products (product_name,description,quantity,unit_price,discount,image) VALUES (:product_name, :description, :quantity, :unit_price, :discount, :image)");
     $status = $query->execute(array(
-        "description"=>$Description,
-        "quantity"=>$Quantity,
-        "unitPrice"=>$UnitPrice,
-        "discount"=>$Discount
+        "product_name"=>$product_name,
+        "description"=>$description,
+        "quantity"=>$quantity,
+        "unit_price"=>$unit_price,
+        "discount"=>$discount,
+        "image"=>$image
     ));
     
     if (!$status){
@@ -21,7 +23,7 @@ function add($Description,$Quantity,$UnitPrice,$Discount) {
 function getAll() {
     include_once("./../classes/database.php");
     $database = new Database();
-    $query = $database->connection->prepare("SELECT * FROM product;");
+    $query = $database->connection->prepare("SELECT * FROM products;");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,7 +38,7 @@ function deleteOneProduct($productName) {
     include_once("./../classes/database.php");
     $database = new Database();
 
-    $query = $database->connection->prepare("DELETE FROM product WHERE Description = :productName;");
+    $query = $database->connection->prepare("DELETE FROM products WHERE product_name = :productName;");
     //$query->bindValue(":productName", "MacBook");
     $result = $query->execute(array(
         "productName" =>$productName,
@@ -54,7 +56,7 @@ function deleteAllProduct() {
     include_once("./../classes/database.php");
     $database = new Database();
 
-    $query = $database->connection->prepare("DELETE FROM product");
+    $query = $database->connection->prepare("DELETE FROM products");
     $result = $query->execute();
 
     if (!$result){
