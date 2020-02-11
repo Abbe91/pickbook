@@ -61,7 +61,3 @@ function deleteAllProduct() {
         console.log(result)
     })
 }
-
-
-
-
