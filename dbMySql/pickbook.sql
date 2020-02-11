@@ -46,6 +46,13 @@ CREATE TABLE `news_letters` (
   `news_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`fulName`, `IsAdmin`, `email`, `phone`, `adress`, `postNu`, `ZIPcode`, `city`, `country`, `Password`) VALUES
+('samer', 0, 'samer@gmail.com', 2020202020, 0, 123456, 33000, 'london', 'sweden', 'be82c4b4bf743dcbed2660bb12df888ed7720177');
+
 -- --------------------------------------------------------
 
 --
