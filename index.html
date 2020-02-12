@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="Style.css"/>
+    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -17,7 +17,7 @@
             <div class="header-right">
               <a><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></a>
               <a></a>
-              <a class="active" onclick="document.getElementById('id01').style.display='block'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> Login</a>
+              <a class="active" onclick="location.href='login.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> Login</a>
               <div id="id01" class="modal">
                 <span onclick="document.getElementById('id01').style.display='none'"
               class="close" title="Close Modal">&times;</span>
@@ -65,7 +65,7 @@
 			<span style="font-family: Shaky Hand Some Comic; display:flex; flex-direction:column; margin-top: 6em; margin-left:20%; font-size:35px; font-weight: bold; 	color: rgba(31,64,45,1);">EDITORIAL DESIGN FROM THE WORLD’S BEST NEWSROOMS</span>
         </div>
         <div>
-            <img id="Hero_book" style="width: 540px; margin-left: 40%;" src="./img/NewspaperDesign_gestalten_book@2x.png">
+            <img id="Hero_book" style="width: 590px; margin: 20px;" src="./img/NewspaperDesign_gestalten_book@2x.png">
         </div>      
     </div>
 </section>
@@ -283,7 +283,7 @@
 <section class="Newsletter">
     <h2 style="padding: 0.9em;"> Learn about new offers and get more <br>deals by joining our Newsletter</h2>
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;  margin-bottom: 2em;">Sign Up</button>
+<button onclick="location.href='register.php'" style="width:auto;  margin-bottom: 2em;">Sign Up</button>
 
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
