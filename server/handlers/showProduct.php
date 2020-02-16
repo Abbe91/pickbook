@@ -119,5 +119,44 @@ if (mysqli_connect_errno()) {
             }
         }
     }
+
+
+	//getting IP User
+	function getIp()
+	{
+//whether ip is from remote address		
+		$ip=$_SERVER['REMOTE_ADDR'];
+
+//whether ip is from share internet		
+		if(!empty($_SERVER['HTTP_CLIENT_IP']))
+		{
+			$ip=$_SERVER['HTTP_CLIENT_IP'];
+		}
+
+//whether ip is from proxy		
+		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+		{
+			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];	
+		}
+		return $ip;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
