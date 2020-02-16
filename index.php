@@ -54,6 +54,12 @@
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
                 <a class="active" href="#home"><img src="./img/shopping_cart.png" style="width: 30px;" alt=""></a>
+                <?php  
+				if(isset($_GET['add_cart'])){
+					cart();
+					echo " The product added to cart.";
+				}
+			 ?>
             </div>
         </div>
     </header>

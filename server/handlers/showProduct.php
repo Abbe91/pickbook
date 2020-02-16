@@ -35,7 +35,7 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>                           
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
@@ -112,7 +112,7 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>                           
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
@@ -139,6 +139,41 @@ if (mysqli_connect_errno()) {
 			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];	
 		}
 		return $ip;
+    }
+
+
+
+    	//creating the shopping cart
+	//import attribute product and IP address user with press buy button in cart table
+	function cart()
+	{
+		global $dsn;
+		
+		if(isset($_GET['add_cart']))
+		{
+			$pro_id=$_GET['add_cart'];
+			
+			//creating or using cookie 
+			if(isset($_COOKIE["ipUserPickBook"]))
+			{
+				$ip	= $_COOKIE["ipUserPickBook"];
+			}else{
+				$ip=getIp();
+				setcookie('ipUserPickBook',$ip,time()+1206900);
+			}
+			
+			$check_pro="select * from cart where p_id='$pro_id' AND ip_add='$ip' ";
+			$run_check=@mysqli_query($dsn,$check_pro);
+			if(@mysqli_num_rows($run_check)>0)
+			{
+				echo "";
+			}
+			else
+			{
+				$insert_pro="insert into cart (p_id,ip_add,qty)values('$pro_id','$ip',1)";
+				$run_insert_pro=@mysqli_query($dsn,$insert_pro);
+			}
+		}
 	}
 
 
