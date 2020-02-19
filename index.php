@@ -22,7 +22,7 @@ session_start();
               <a><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></a>
               <a></a>
               <a class="active" onclick="location.href='login.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if(isset($_SESSION["myemail"])){echo $_SESSION["myemail"];}  ?>login</a>
-              <a class="active" onclick="location.href='logout.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+             
               <div id="id01" class="modal">
                 <span onclick="document.getElementById('id01').style.display='none'"
               class="close" title="Close Modal">&times;</span>
