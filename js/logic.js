@@ -14,24 +14,47 @@ function makeRequest(url, method, formdata, callback) {
 
 function getAllProduct() {
     makeRequest("./../server/recievers/productReciever.php?action=getAll", "GET", null, (result) => {
-
+       
+        let table = document.getElementById("table") 
+        
         for(let i = 0; i < result.length; i++){
-
-            let product = result[i];
-            let trTag = document.createElement("tr");
-        
-            document.getElementById("table").append(trTag);
             
-            trTag.innerText = JSON.stringify(product);
-        
-            console.log(result);
-        }
+            let product_id = (result[i].product_id);
+            let product_name = (result[i].product_name);
+            let description = (result[i].description);
+            let quantity = (result[i].quantity);
+            let unit_price =(result[i].unit_price);
+            let discount = (result[i].discount);
+            let image = (result[i].image);
+            
+            let row = document.createElement("tr");
 
-        // for(let i = 0; i < result.length; i++){
-        //     console.log(result[i]);
-        //     document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
-        //  }
-        // console.log(result)
+            let nameTd = document.createElement("td");
+            let idTd = document.createElement("td");
+            let descriptionTd = document.createElement("td");
+            let quantityTd = document.createElement("td");
+            let unit_priceTd = document.createElement("td");
+            let discountTd = document.createElement("td");
+            let imageTd = document.createElement("td");
+
+            nameTd.innerText = product_name;
+            idTd.innerText = product_id;
+            descriptionTd.innerText = description;
+            quantityTd.innerText = quantity;
+            unit_priceTd.innerText = unit_price;
+            discountTd.innerText = discount;
+            imageTd.innerText = image;
+    
+            row.appendChild(nameTd);
+            row.appendChild(idTd);
+            row.appendChild(descriptionTd);
+            row.appendChild(quantityTd);
+            row.appendChild(unit_priceTd);
+            row.appendChild(discountTd);
+            row.appendChild(imageTd);
+
+            table.appendChild(row);
+        }
     })
 }
 getAllProduct();
