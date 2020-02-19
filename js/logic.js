@@ -29,24 +29,24 @@ function getAllProduct() {
             
             let row = document.createElement("tr");
 
-            let nameTd = document.createElement("td");
             let idTd = document.createElement("td");
+            let nameTd = document.createElement("td");
             let descriptionTd = document.createElement("td");
             let quantityTd = document.createElement("td");
             let unit_priceTd = document.createElement("td");
             let discountTd = document.createElement("td");
             let imageTd = document.createElement("td");
 
-            nameTd.innerText = product_name;
             idTd.innerText = product_id;
+            nameTd.innerText = product_name;
             descriptionTd.innerText = description;
             quantityTd.innerText = quantity;
             unit_priceTd.innerText = unit_price;
             discountTd.innerText = discount;
             imageTd.innerText = image;
     
-            row.appendChild(nameTd);
             row.appendChild(idTd);
+            row.appendChild(nameTd);
             row.appendChild(descriptionTd);
             row.appendChild(quantityTd);
             row.appendChild(unit_priceTd);
