@@ -1,4 +1,3 @@
-
 function makeRequest(url, method, formdata, callback) {
     fetch(url, {
         method: method,
@@ -7,7 +6,7 @@ function makeRequest(url, method, formdata, callback) {
         return data.json()
     }).then((result) => {
         callback(result)
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log("Error: ", err)
     })
 }
@@ -38,9 +37,9 @@ function insertProduct() {
     data.append("discount", insertDiscount);
     data.append("image", insertImage);
 
-    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result)=>{
+    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
         console.log(result)
-    }) 
+    })
 }
 
 
@@ -51,7 +50,7 @@ function deleteProduct() {
     data.append("action", "deleteOneProduct");
     data.append("productName", deleteOneProduct);
 
-    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result)=>{
+    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result) => {
         console.log(result)
     })
 }
@@ -60,7 +59,7 @@ function deleteAllProduct() {
     var data = new FormData()
     data.append("action", "deleteAllProduct");
 
-    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result)=>{
+    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result) => {
         console.log(result)
     })
 }
