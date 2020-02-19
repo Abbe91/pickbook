@@ -13,10 +13,27 @@ function makeRequest(url, method, formdata, callback) {
 
 function getAllProduct() {
     makeRequest("./../server/recievers/productReciever.php?action=getAll", "GET", null, (result) => {
-        console.log(result)
+
+        for(let i = 0; i < result.length; i++){
+
+            let product = result[i];
+            let trTag = document.createElement("tr");
+        
+            document.getElementById("table").append(trTag);
+            
+            trTag.innerText = JSON.stringify(product);
+        
+            console.log(result);
+        }
+
+        // for(let i = 0; i < result.length; i++){
+        //     console.log(result[i]);
+        //     document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
+        //  }
+        // console.log(result)
     })
 }
-
+getAllProduct();
 
 
 function insertProduct() {
