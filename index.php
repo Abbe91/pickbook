@@ -18,7 +18,7 @@
 <body >
     <header>
         <div class="header">
-            <a href="#default" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
             <div class="header-center">
             </div>
             <div class="header-right">
@@ -57,14 +57,17 @@
                 <?php  
 				if(isset($_GET['add_cart'])){
 					cart();
-					echo " The product added to cart.";
-				}
+                    echo " The product added to cart.";
+                    
+                }
+                echo "<span> <b> Total Items :  <b/></span>" ;
+				total_items();
 			 ?>
             </div>
         </div>
     </header>
     <div id="catNav" class="topnav">
-    <a onclick="" class="active" href="#home">Home</a>
+    <a onclick="" class="active" href="./index.php">Home</a>
 
          <?php 
             getCat();
@@ -83,7 +86,6 @@
     </section> -->
     <section class="product">
         <div class="container">
-        <h1 class="title-h">Latest Products</h1>
             <div class="row">
                <?php 
                  getPro();

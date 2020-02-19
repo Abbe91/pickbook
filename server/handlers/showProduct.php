@@ -33,6 +33,7 @@ if (mysqli_connect_errno()) {
                 <div class='col-md-3 col-sm-6'>
                     <div class='product-grid4'>
                         <div class='product-content'>
+                          <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
@@ -55,18 +56,16 @@ if (mysqli_connect_errno()) {
         {
             $category_id=$row_cat['category_id'];
             $categoryName=$row_cat['categoryName'];
-            echo "<a href='productSidan.php?category_id=$category_id'>$categoryName</a>";
+            echo "<a href='index.php?category_id=$category_id'>$categoryName</a>";
         }
         
     }
-
-
-
 
     //display products when set category_id 
     function getCatPro()
     {   
         global $dsn;
+        
         if(isset($_GET['category_id'])){
             
             $pro_cat_id=$_GET['category_id'];
@@ -110,6 +109,7 @@ if (mysqli_connect_errno()) {
                 <div class='col-md-3 col-sm-6'>
                     <div class='product-grid4'>
                         <div class='product-content'>
+                          <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
@@ -180,7 +180,56 @@ if (mysqli_connect_errno()) {
 
 
 
+//getting the total added items
+function total_items()
+	
+{
+    
+    if(isset($_GET['add_cart']))
+    {	
+        global $dsn;
+        ' <span style="background-color: #ff0000;" data-mce-style="background-color: #ff0000;">  ';
+        
+        //creating or using cookie 
+        if(isset($_COOKIE["ipUserPickBook"]))
+        {
+            $ip	= $_COOKIE["ipUserPickBook"];
+        }else{
+            $ip=getIp();
+            setcookie('ipUserPickBook',$ip,time()+1206900);
+        }'</span>';
+    
+        
+        $get_items = "select * from cart where ip_add='$ip'";
+        
+        $run_items=@mysqli_query($dsn,$get_items);
+        
+        $count_items=@mysqli_num_rows($run_items);
+    
+    }else
+    {	
+    
+        global $dsn;
+		'<span style="background-color: #ff0000;" data-mce-style="background-color: #ff0000;">';
+        //creating or using cookie 
+        if(isset($_COOKIE["ipUserPickBook"]))
+        {
+            $ip	= $_COOKIE["ipUserPickBook"];
+        }else{
+            $ip=getIp();
+            setcookie('ipUserPickBook',$ip,time()+1206900);
+        }
+		'</span>';			
+        $get_items = "select * from cart where ip_add='$ip'";
+        
+        $run_items =@mysqli_query($dsn,$get_items);
+        
+        $count_items =@mysqli_num_rows($run_items);
+    }
+    
+    echo $count_items;
 
+}
 
 
 
