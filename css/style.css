@@ -222,7 +222,17 @@
     width: 100%;
     opacity: 0.9;
   }
-  
+  .file{
+    background-color: #45AFBA;
+    color: #fff;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
   button:hover {
     opacity:1;
   }
@@ -293,3 +303,28 @@
        width: 100%;
     }
   }
+
+
+
+
+
+
+
+
+/* ### Table Style ### */
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

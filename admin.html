@@ -1,3 +1,6 @@
+<?php include_once("./server/handlers/productHandler.php");?>
+<?php //include_once("./server/classes/database.php")?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,25 +14,45 @@
 <body>
 
     <br>
-    Product Name: <input type="text" name="insertProductName"><hr>
-    <br>
-    Description: <input type="text" name="insertDescription"><hr>
-    <br>
-    Quantity: <input type="text" name="insertQuantity"><hr>
-    <br>
-    UnitPrice: <input type="text" name="insertUnitPrice"><hr>
-    <br>
-    Discount: <input type="text" name="insertDiscount"><hr>
-    <br>
-    Image: <input type="file" name="productImg" id="imageUploadInput"><hr>
-    <br>
-    Skriv det produkten som du vill radera <input type="text" name="deleteOneProduct">
+    Product Name: <input type="text" name="insertProductName">
+    
+    Description: <input type="text" name="insertDescription">
+    
+    Quantity: <input type="text" name="insertQuantity">
+    
+    UnitPrice: <input type="text" name="insertUnitPrice">
+    
+    Discount: <input type="text" name="insertDiscount">
+    
+    Image: <input class="file" type="file" name="productImg" id="imageUploadInput">
+    <hr>
+    <input type="text" name="deleteOneProduct" placeholder="Skriv det produkten som du vill radera">
     <button onclick="deleteProduct();">Delete Product</button>
     <hr>
-    <input onclick="deleteAllProduct()" type="button" name="removeAllProduct" value="Ta bort allt">
+    <input class="file" onclick="deleteAllProduct()" type="button" name="removeAllProduct" value="Ta bort allt">
     <button onclick="insertProduct();">Add Product</button>
     <button onclick="getAllProduct()">Get Product</button>
+<hr>
 
+<table id="table">
+
+    <table>
+        <tr id="tr">
+            <th>Product id</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>UnitPrice</th>
+            <th>Discount</th>
+            <th>Image</th>
+        </tr>
+        
+        <div > 
+
+        </div>
+           
+    
+    </table>
 
 
 

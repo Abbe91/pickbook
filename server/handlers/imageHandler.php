@@ -1,7 +1,6 @@
 <?php
 
     function uploadImage($image) {
-
         if(!$image){
             return NULL;
         }
