@@ -15,7 +15,7 @@
 
 </head>
 
-<body >
+<body  >
     <header>
         <div class="header">
             <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
@@ -54,15 +54,8 @@
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
                 <a class="active" href="#home"><img src="./img/shopping_cart.png" style="width: 30px;" alt=""></a>
-                <?php  
-				if(isset($_GET['add_cart'])){
-					cart();
-                    echo " The product added to cart.";
-                    
-                }
-                echo "<span> <b> Total Items :  <b/></span>" ;
-				total_items();
-			 ?>
+                
+			
             </div>
         </div>
     </header>
@@ -95,6 +88,13 @@
            </div>
         </div>
     </section>
+
+
+
+
+
+
+
     <section class="product">
         <div class="container">
             <h1 class="title-h">BOOK ON SALE TODAY</h1>
