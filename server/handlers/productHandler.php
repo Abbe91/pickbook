@@ -1,7 +1,10 @@
 <?php
 
 function add($product_name,$description,$quantity,$unit_price,$discount,$image) {
+    include_once("./../handlers/imageHandler.php");
     include_once("./../classes/database.php");
+    $imageUrl = uploadImage($image);
+
     $database = new Database();
     $query = $database->connection->prepare("INSERT INTO products (product_name,description,quantity,unit_price,discount,image) VALUES (:product_name, :description, :quantity, :unit_price, :discount, :image)");
     $status = $query->execute(array(
@@ -10,9 +13,9 @@ function add($product_name,$description,$quantity,$unit_price,$discount,$image) 
         "quantity"=>$quantity,
         "unit_price"=>$unit_price,
         "discount"=>$discount,
-        "image"=>$image
+        "image"=>$imageUrl
     ));
-    
+
     if (!$status){
         throw new Exception("Could not add new product", 500);
         exit;
@@ -26,13 +29,15 @@ function getAll() {
     $query = $database->connection->prepare("SELECT * FROM products;");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
+    
     if (empty($result)){
-        throw new Exception("No students found", 404);
+        throw new Exception("No product found", 404);
         exit;
     }
     return $result;
 }
+
+
 
 function deleteOneProduct($productName) {
     include_once("./../classes/database.php");
@@ -65,6 +70,8 @@ function deleteAllProduct() {
     }
     return $query->rowCount();
 }
+
+
 
 
 ?>
