@@ -27,11 +27,11 @@ function getAllProduct() {
             console.log(result);
         }
 
-        // for(let i = 0; i < result.length; i++){
-        //     console.log(result[i]);
-        //     document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
-        //  }
-        // console.log(result)
+        for(let i = 0; i < result.length; i++){
+            console.log(result[i]);
+            document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
+         }
+        console.log(result)
     })
 }
 getAllProduct();
@@ -81,3 +81,33 @@ function deleteAllProduct() {
         console.log(result)
     })
 }
+function getAllaNewsLetter() {
+   
+    makeRequest("./../server/recievers/newsLetterReciever.php?action=getNewsUser", "GET", null, (result) => {
+
+        let table = document.getElementById("newsLetter")
+
+        for(let i = 0; i < result.length; i++){
+
+            let userName = (result[i].fulName);
+            let email = (result[i].email);
+
+            let row = document.createElement("tr");
+
+            let userNameTD = document.createElement("td");
+            let emailTD = document.createElement("td");
+
+            userNameTD.innerText = userName;
+            emailTD.innerText = email;
+
+            row.appendChild(userNameTD);
+            row.appendChild(emailTD);
+
+            table.appendChild(row);
+
+
+
+        }
+    })
+}
+getAllaNewsLetter();
