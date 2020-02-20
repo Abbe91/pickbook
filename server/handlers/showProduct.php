@@ -56,7 +56,7 @@ if (mysqli_connect_errno()) {
         {
             $category_id=$row_cat['category_id'];
             $categoryName=$row_cat['categoryName'];
-            echo "<a href='productSidan.php?category_id=$category_id'>$categoryName</a>";
+            echo "<a href='index.php?category_id=$category_id'>$categoryName</a>";
         }
         
     }
