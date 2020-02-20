@@ -5,6 +5,7 @@ try {
         if($_POST["action"] == "add") { 
             include_once("./../handlers/productHandler.php"); 
               echo json_encode(add(
+                $_POST["product_cat"],
                 $_POST["product_name"],
                 $_POST["description"],
                 $_POST["quantity"],
@@ -15,7 +16,7 @@ try {
             exit;
         } else if($_POST["action"] == "deleteOneProduct") {
             include_once("./../handlers/productHandler.php");              
-            echo json_encode(deleteOneProduct($_POST['productName']));
+            echo json_encode(deleteOneProduct($_POST['product_id']));
             exit;
 
         }else if($_POST["action"] == "deleteAllProduct") {

@@ -1,13 +1,14 @@
 <?php
 
-function add($product_name,$description,$quantity,$unit_price,$discount,$image) {
+function add($product_cat,$product_name,$description,$quantity,$unit_price,$discount,$image) {
     include_once("./../handlers/imageHandler.php");
     include_once("./../classes/database.php");
     $imageUrl = uploadImage($image);
 
     $database = new Database();
-    $query = $database->connection->prepare("INSERT INTO products (product_name,description,quantity,unit_price,discount,image) VALUES (:product_name, :description, :quantity, :unit_price, :discount, :image)");
+    $query = $database->connection->prepare("INSERT INTO products (product_cat,product_name,description,quantity,unit_price,discount,image) VALUES (:product_cat, :product_name, :description, :quantity, :unit_price, :discount, :image)");
     $status = $query->execute(array(
+        "product_cat" => $product_cat,
         "product_name"=>$product_name,
         "description"=>$description,
         "quantity"=>$quantity,
@@ -26,7 +27,7 @@ function add($product_name,$description,$quantity,$unit_price,$discount,$image) 
 function getAll() {
     include_once("./../classes/database.php");
     $database = new Database();
-    $query = $database->connection->prepare("SELECT product_id,product_name,description,quantity,unit_price,discount,image FROM products");
+    $query = $database->connection->prepare("SELECT product_id,product_cat,product_name,description,quantity,unit_price,discount,image FROM products");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     
@@ -38,14 +39,14 @@ function getAll() {
 }
 
 
-function deleteOneProduct($productName) {
+function deleteOneProduct($product_id) {
     include_once("./../classes/database.php");
     $database = new Database();
 
-    $query = $database->connection->prepare("DELETE FROM products WHERE product_name = :productName;");
+    $query = $database->connection->prepare("DELETE FROM products WHERE product_id = :product_id");
     //$query->bindValue(":productName", "MacBook");
     $result = $query->execute(array(
-        "productName" =>$productName,
+        "product_id" =>$product_id,
     ));
 
     if (!$result){
