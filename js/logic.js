@@ -14,17 +14,63 @@ function makeRequest(url, method, formdata, callback) {
 
 function getAllProduct() {
     makeRequest("./../server/recievers/productReciever.php?action=getAll", "GET", null, (result) => {
-
+       
+        let table = document.getElementById("table") 
+        
         for(let i = 0; i < result.length; i++){
-
-            let product = result[i];
-            let trTag = document.createElement("tr");
-        
-            document.getElementById("table").append(trTag);
             
-            trTag.innerText = JSON.stringify(product);
-        
-            console.log(result);
+            let product_id = (result[i].product_id);
+            let product_cat = (result[i].product_cat);
+            let product_name = (result[i].product_name);
+            let description = (result[i].description);
+            let quantity = (result[i].quantity);
+            let unit_price =(result[i].unit_price);
+            let discount = (result[i].discount);
+            let image = (result[i].image);
+            
+            let row = document.createElement("tr");
+
+            let idTd = document.createElement("td");
+            let product_catTd = document.createElement("td");
+            let nameTd = document.createElement("td");
+            let descriptionTd = document.createElement("td");
+            let quantityTd = document.createElement("td");
+            let unit_priceTd = document.createElement("td");
+            let discountTd = document.createElement("td");
+            let imageTd = document.createElement("td");
+            let deleteButton = document.createElement("button");
+            let updateButton = document.createElement("button");
+
+            idTd.innerText = product_id;
+            product_catTd.innerText = product_cat;
+            nameTd.innerText = product_name;
+            descriptionTd.innerText = description;
+            quantityTd.innerText = quantity;
+            unit_priceTd.innerText = unit_price;
+            discountTd.innerText = discount;
+            imageTd.innerText = image;
+            deleteButton.innerText = "Delete";
+            updateButton.innerText = "Update";
+
+            deleteButton.onclick = function() {
+                deleteProduct();
+            }
+            updateButton.onclick = function() {
+               
+            }
+    
+            row.appendChild(idTd);
+            row.appendChild(product_catTd);
+            row.appendChild(nameTd);
+            row.appendChild(descriptionTd);
+            row.appendChild(quantityTd);
+            row.appendChild(unit_priceTd);
+            row.appendChild(discountTd);
+            row.appendChild(imageTd);
+            row.appendChild(deleteButton);
+            row.appendChild(updateButton);
+
+            table.appendChild(row);
         }
 
         for(let i = 0; i < result.length; i++){
@@ -32,12 +78,59 @@ function getAllProduct() {
             document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
          }
         console.log(result)
+
     })
 }
 getAllProduct();
 
+function showAllOrderOnTable() {
+    makeRequest("./../server/recievers/orderReciever.php?action=getAllOrder", "GET", null, (result) => {
+
+        let orderTable = document.getElementById("orderTable");
+
+        for(let i = 0; i < result.length; i++){
+    
+            let orderId = (result[i].orderId);
+            let users_id = (result[i].users_id);
+            let orderDate = (result[i].orderDate);
+            let shippingaddress = (result[i].shippingaddress);
+            let wight = (result[i].wight);
+            let total_price =(result[i].total_price);
+
+            let row = document.createElement("tr");
+
+            let orderIdTd = document.createElement("td");
+            let users_idTd = document.createElement("td");
+            let orderDateTd = document.createElement("td");
+            let shippingaddressTd = document.createElement("td");
+            let wightTd = document.createElement("td");
+            let total_priceTd = document.createElement("td");
+
+            orderIdTd.innerText = orderId;
+            users_idTd.innerText = users_id;
+            orderDateTd.innerText = orderDate;
+            shippingaddressTd.innerText = shippingaddress;
+            wightTd.innerText = wight;
+            total_priceTd.innerText = total_price;
+
+            row.appendChild(orderIdTd);
+            row.appendChild(users_idTd);
+            row.appendChild(orderDateTd);
+            row.appendChild(shippingaddressTd);
+            row.appendChild(wightTd);
+            row.appendChild(total_priceTd);
+
+            orderTable.appendChild(row);
+        }
+    })
+}
+showAllOrderOnTable();
+
+
 
 function insertProduct() {
+
+    let insertProductCategory = document.getElementsByName("insertProductCategory")[0].value
     let insertProductName = document.getElementsByName("insertProductName")[0].value
     let insertDescription = document.getElementsByName("insertDescription")[0].value
     let insertQuantity = document.getElementsByName("insertQuantity")[0].value
@@ -48,6 +141,7 @@ function insertProduct() {
     var data = new FormData()
 
     data.append("action", "add");
+    data.append("product_cat", insertProductCategory);
     data.append("product_name", insertProductName);
     data.append("description", insertDescription);
     data.append("quantity", insertQuantity);
@@ -63,10 +157,11 @@ function insertProduct() {
 
 function deleteProduct() {
     let deleteOneProduct = document.getElementsByName("deleteOneProduct")[0].value
+    
 
     var data = new FormData()
     data.append("action", "deleteOneProduct");
-    data.append("productName", deleteOneProduct);
+    data.append("product_id", deleteOneProduct);
 
     makeRequest("./../server/recievers/productReciever.php", "POST", data, (result)=>{
         console.log(result)
@@ -141,5 +236,38 @@ function deletNewsletter() {
         makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result)=>{
             console.log(result)
         })
+}
+
+// ### Show ProdcutList Section ### //
+
+function showProductList() {
+    var productList = document.getElementById("productList");
+    if (productList.style.display === "none") {
+        productList.style.display = "block";
+    } else {
+        productList.style.display = "none";
+    }
+}
+
+// ### Show OrderList Seection ### //
+
+function showOrderList() {
+    var productList = document.getElementById("orderList");
+    if (productList.style.display === "none") {
+        productList.style.display = "block";
+    } else {
+        productList.style.display = "none";
+    }
+}
+
+// ### InsertProdukt Section ### ///
+
+function showInsertSection() {
+    var productList = document.getElementById("insertProduct");
+    if (productList.style.display === "none") {
+        productList.style.display = "block";
+    } else {
+        productList.style.display = "none";
+    }
 }
 
