@@ -81,6 +81,7 @@ function deleteAllProduct() {
         console.log(result)
     })
 }
+
 function getAllaNewsLetter() {
    
     makeRequest("./../server/recievers/newsLetterReciever.php?action=getNewsUser", "GET", null, (result) => {
@@ -111,3 +112,34 @@ function getAllaNewsLetter() {
     })
 }
 getAllaNewsLetter();
+
+
+
+function sendNewsletter() {
+    
+        let emailForNewsLetter = document.getElementsByName("emailForNewsLetter")[0].value
+        let nameForNewsLetter = document.getElementsByName("nameForNewsLetter")[0].value 
+        
+        var data = new FormData()
+
+        data.append("action", "add");
+        data.append("emailForNewsLetter", emailForNewsLetter);
+        data.append("nameForNewsLetter", nameForNewsLetter);
+    
+        makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result)=>{
+            console.log(result)
+        })
+}
+
+function deletNewsletter() {
+        let deletEmailNaewsleter = document.getElementsByName("deleteOneEmail")[0].value 
+
+        var data = new FormData()
+
+        data.append("action","deletNewsletter");
+        data.append("deleteOneEmail", deletEmailNaewsleter);
+        makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result)=>{
+            console.log(result)
+        })
+}
+
