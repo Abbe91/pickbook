@@ -328,3 +328,13 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+#productList{
+  display: none;
+}
+#orderList{
+  display: none;
+}
+#insertProduct{
+  display: none;
+}
