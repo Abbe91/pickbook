@@ -26,7 +26,7 @@ function add($product_name,$description,$quantity,$unit_price,$discount,$image) 
 function getAll() {
     include_once("./../classes/database.php");
     $database = new Database();
-    $query = $database->connection->prepare("SELECT * FROM products;");
+    $query = $database->connection->prepare("SELECT product_id,product_name,description,quantity,unit_price,discount,image FROM products");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     
@@ -36,7 +36,6 @@ function getAll() {
     }
     return $result;
 }
-
 
 
 function deleteOneProduct($productName) {

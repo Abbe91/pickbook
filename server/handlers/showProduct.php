@@ -35,6 +35,7 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                           <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
+                           <img width='130' height='200' src='/$pro_image' alt='image' />
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
@@ -111,6 +112,7 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                           <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
+                           <img width='130' height='200' src='/$pro_image' alt='image' />
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>

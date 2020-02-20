@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script defer src="./js/logic.js"></script>
 
 </head>
 
@@ -311,7 +312,7 @@
             </div>
         </div>
     </section>
-    <section class="Newsletter">
+    <!-- <section class="Newsletter">
         <h2 style="padding: 0.9em;"> Learn about new offers and get more <br>deals by joining our Newsletter</h2>
 
         <button onclick="location.href='register.php'" style="width:auto;  margin-bottom: 2em;">Sign Up</button>
@@ -326,15 +327,12 @@
                     <label for="email"><b>Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required>
 
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
+                    <label for="name"><b>Name</b></label>
+                    <input type="text" placeholder="Enter Your Name" name="text" required>
+                    
                     <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
+                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                    </label>
 
                     <div class="clearfix">
                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -342,6 +340,46 @@
                     </div>
             </form>
             </div>
+    </section> -->
+
+    <section class="Newsletter">
+    <div >
+
+    <div class="container">
+      <h1>Learn about new offers and get more deals by joining our Newsletter</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <table>
+        
+      <tr>
+      <td><label for="email"><b>Email   </b></label> </td>
+      <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
+      </tr>
+      <tr>
+      <td><label for="psw"><b>Name   </b></label></td>
+      <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
+      </tr>
+      </table>
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <div class="clearfix">
+        <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
+      </div>
+
+      <table>
+            <tr>
+            <td><label for="email"><b>Email   </b></label> </td>
+            <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
+            </tr>
+      </table>
+      <div>
+          <button type="submit" onclick="deletNewsletter()" class="signupbtn" >Unsubscribe</button>
+      </div>
+      <br>
+
+    </div>
     </section>
     <footer>
         <div class="footer">
