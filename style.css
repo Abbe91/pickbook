@@ -93,7 +93,24 @@ body {
 /* end of navbar */
 
 
-
+.newsletter{
+  font-size: 14px;
+  background-color: #fff;
+  }
+  
+  .modal-content{
+      text-align: left;
+      width: 700px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid  rgba(0,46,35,1);
+  }
+  
+  
+  
+  input{
+      margin-left: 20px;
+  }
 
 
 
