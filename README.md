@@ -1,4 +1,4 @@
-## Grupp 4 Medhavdare: Rezan Turan,
+#### Grupp 4 Medhavdare: Rezan Turan, Abdullah abu-alhaijja, Nawar Mohra, Ahmad Askandarafshar
 # Kravspecifikation på projektet:
 
 • Alla sidor skall vara responsiva. (G)
