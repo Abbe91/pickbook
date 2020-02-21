@@ -221,6 +221,7 @@
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    margin: 3px;
   }
   .file{
     background-color: #45AFBA;
@@ -304,13 +305,6 @@
     }
   }
 
-
-
-
-
-
-
-
 /* ### Table Style ### */
 
 table {
@@ -329,15 +323,16 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-#productList{
-  display: none;
+#button-section{
+  display: flex;
 }
-#orderList{
-  display: none;
-}
-#insertProduct{
-  display: none;
-}
-#listNewsLetter{
-  display: none;
+.removeAllProduct{
+  background-color: #B35462;
+  color: #fff;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
 }

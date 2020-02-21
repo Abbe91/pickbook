@@ -340,7 +340,6 @@
             <p>2020 All Rights Reserved By Group4</p>
         </div>
     </footer>
-    <script type="text/javascript" src="./script.js"></script>
 </body>
 
 </html>

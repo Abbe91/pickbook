@@ -65,13 +65,34 @@ function deleteAllProduct() {
     $result = $query->execute();
 
     if (!$result){
-        throw new Exception("No products to delete", 500);
+        throw new Exception("No products to delete all product", 500);
         exit;
     }
     return $query->rowCount();
 }
 
+function uppdate($product_cat,$product_name,$description,$quantity,$unit_price,$discount,$image) {
+    include_once("./../handlers/imageHandler.php");
+    include_once("./../classes/database.php");
+    $imageUrl = uploadImage($image);
 
+    $database = new Database();
+    $query = $database->connection->prepare("UPDATE products (product_cat,product_name,description,quantity,unit_price,discount,image) SET (:product_cat, :product_name, :description, :quantity, :unit_price, :discount, :image)");
+    $status = $query->execute(array(
+        "product_cat" => $product_cat,
+        "product_name"=>$product_name,
+        "description"=>$description,
+        "quantity"=>$quantity,
+        "unit_price"=>$unit_price,
+        "discount"=>$discount,
+        "image"=>$imageUrl
+    ));
 
+    if (!$status){
+        throw new Exception("Could not update product", 500);
+        exit;
+    }
+    return $status;
+}
 
 ?>
