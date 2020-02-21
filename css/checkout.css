@@ -98,8 +98,10 @@
 table{
 	float:left;
 	border:3px solid #888;
-	width:100%;
+    width: 50%;
+    margin-left: 30%;
 }
+
 th{
 	background-color:#888;
 	color:#FFF;
@@ -110,7 +112,7 @@ td{
 	padding:2% 0;
 	color:#888;
 	text-align:center;
-	width:19%;
+	width:auto;
 }
 tr:nth-child(even){
 	background-color:#888;
@@ -119,7 +121,7 @@ tr:nth-child(even) td{
 	color:#FFF;
 }
 td img{
-	width:50%;
+	width:auto;
 }
 #total{
 	display:block;
