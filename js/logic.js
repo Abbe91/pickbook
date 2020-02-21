@@ -7,27 +7,27 @@ function makeRequest(url, method, formdata, callback) {
         return data.json()
     }).then((result) => {
         callback(result)
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log("Error: ", err)
     })
 }
 
 function getAllProduct() {
     makeRequest("./../server/recievers/productReciever.php?action=getAll", "GET", null, (result) => {
-       
-        let table = document.getElementById("table") 
-        
-        for(let i = 0; i < result.length; i++){
-            
+
+        let table = document.getElementById("table")
+
+        for (let i = 0; i < result.length; i++) {
+
             let product_id = (result[i].product_id);
             let product_cat = (result[i].product_cat);
             let product_name = (result[i].product_name);
             let description = (result[i].description);
             let quantity = (result[i].quantity);
-            let unit_price =(result[i].unit_price);
+            let unit_price = (result[i].unit_price);
             let discount = (result[i].discount);
             let image = (result[i].image);
-            
+
             let row = document.createElement("tr");
 
             let idTd = document.createElement("td");
@@ -41,6 +41,7 @@ function getAllProduct() {
             let deleteButton = document.createElement("button");
             let updateButton = document.createElement("button");
 
+            row.id = product_id;
             idTd.innerText = product_id;
             product_catTd.innerText = product_cat;
             nameTd.innerText = product_name;
@@ -52,13 +53,25 @@ function getAllProduct() {
             deleteButton.innerText = "Delete";
             updateButton.innerText = "Update";
 
-            deleteButton.onclick = function() {
-                deleteProduct();
+            deleteButton.style.background = "#B35462";
+            updateButton.style.background = "#66B375";
+
+            deleteButton.onclick = function () {
+                deleteProduct(product_id);
             }
-            updateButton.onclick = function() {
-               
+            updateButton.onclick = function () {
+                updateProduct(
+                    product_id,
+                    product_cat,
+                    product_name,
+                    description,
+                    quantity,
+                    unit_price,
+                    discount,
+                    image
+                )
             }
-    
+
             row.appendChild(idTd);
             row.appendChild(product_catTd);
             row.appendChild(nameTd);
@@ -73,12 +86,9 @@ function getAllProduct() {
             table.appendChild(row);
         }
 
-        for(let i = 0; i < result.length; i++){
-            console.log(result[i]);
-            document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
-         }
-        console.log(result)
-
+        // for(let i = 0; i < result.length; i++){
+        //     document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
+        //  }
     })
 }
 getAllProduct();
@@ -88,14 +98,14 @@ function showAllOrderOnTable() {
 
         let orderTable = document.getElementById("orderTable");
 
-        for(let i = 0; i < result.length; i++){
-    
+        for (let i = 0; i < result.length; i++) {
+
             let orderId = (result[i].orderId);
             let users_id = (result[i].users_id);
             let orderDate = (result[i].orderDate);
             let shippingaddress = (result[i].shippingaddress);
             let wight = (result[i].wight);
-            let total_price =(result[i].total_price);
+            let total_price = (result[i].total_price);
 
             let row = document.createElement("tr");
 
@@ -149,22 +159,73 @@ function insertProduct() {
     data.append("discount", insertDiscount);
     data.append("image", insertImage);
 
-    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result)=>{
-        console.log(result)
-    }) 
+    if (insertProductCategory == "") {
+        alert("Välj category!")
+    } if (insertProductName == "") {
+        alert("Skriv produknamn")
+    } if (insertDescription == "") {
+        alert("Skriv produkt beskrivning")
+    } if (insertQuantity == "") {
+        alert("Ange antal för produkten du vill spara")
+    } if (insertUnitPrice == "") {
+        alert("Ange pris för produkten som vill spara")
+    } if (insertDiscount == "") {
+        alert("Ange rabat för produkten")
+    }
+
+    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
+        if (result == true) {
+            alert("Produkten har sparat i databasen")
+        } else {
+            alert("Det gick inte spara produkten försök igen!")
+        }
+        if (result === true) {
+            location.reload();
+        }
+    })
+}
+
+function updateProduct() {
+
+    let insertProductCategory = document.getElementsByName("insertProductCategory")[0].value
+    let insertProductName = document.getElementsByName("insertProductName")[0].value
+    let insertDescription = document.getElementsByName("insertDescription")[0].value
+    let insertQuantity = document.getElementsByName("insertQuantity")[0].value
+    let insertUnitPrice = document.getElementsByName("insertUnitPrice")[0].value
+    let insertDiscount = document.getElementsByName("insertDiscount")[0].value
+    let insertImage = document.getElementsByName("productImg")[0].files[0]
+
+    var data = new FormData()
+
+    data.append("action", "updateProduct");
+    data.append("product_cat", insertProductCategory);
+    data.append("product_name", insertProductName);
+    data.append("description", insertDescription);
+    data.append("quantity", insertQuantity);
+    data.append("unit_price", insertUnitPrice);
+    data.append("discount", insertDiscount);
+    data.append("image", insertImage);
+
+    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
+
+        if (result) {
+            getAllProduct();            
+        }
+    })
 }
 
 
-function deleteProduct() {
-    let deleteOneProduct = document.getElementsByName("deleteOneProduct")[0].value
-    
+function deleteProduct(id) {
 
     var data = new FormData()
     data.append("action", "deleteOneProduct");
-    data.append("product_id", deleteOneProduct);
+    data.append("product_id", id);
 
-    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result)=>{
-        console.log(result)
+    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result) => {
+        if (result) {
+            const row = document.getElementById(id);
+            row.remove()
+        }
     })
 }
 
@@ -172,24 +233,23 @@ function deleteAllProduct() {
     var data = new FormData()
     data.append("action", "deleteAllProduct");
 
-    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result)=>{
-        console.log(result)
+    makeRequest("./../server/recievers/productReciever.php", "POST", data, (result) => {
+    
     })
 }
 
 function getAllaNewsLetter() {
-   
+
     makeRequest("./../server/recievers/newsLetterReciever.php?action=getNewsUser", "GET", null, (result) => {
 
         let table = document.getElementById("newsLetter")
 
-        for(let i = 0; i < result.length; i++){
+        for (let i = 0; i < result.length; i++) {
 
             let userName = (result[i].fulName);
             let email = (result[i].email);
 
             let row = document.createElement("tr");
-
             let userNameTD = document.createElement("td");
             let emailTD = document.createElement("td");
 
@@ -208,36 +268,44 @@ getAllaNewsLetter();
 
 
 function sendNewsletter() {
-    
-        let emailForNewsLetter = document.getElementsByName("emailForNewsLetter")[0].value
-        let nameForNewsLetter = document.getElementsByName("nameForNewsLetter")[0].value 
-        
-        var data = new FormData()
 
-        data.append("action", "add");
-        data.append("emailForNewsLetter", emailForNewsLetter);
-        data.append("nameForNewsLetter", nameForNewsLetter);
-    
-        makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result)=>{
-            console.log(result)
-        })
+    let emailForNewsLetter = document.getElementsByName("emailForNewsLetter")[0].value
+    let nameForNewsLetter = document.getElementsByName("nameForNewsLetter")[0].value
+
+    var data = new FormData()
+
+    data.append("action", "add");
+    data.append("emailForNewsLetter", emailForNewsLetter);
+    data.append("nameForNewsLetter", nameForNewsLetter);
+
+    makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result) => {
+
+    })
 }
 
 function deletNewsletter() {
-        let deletEmailNaewsleter = document.getElementsByName("deleteOneEmail")[0].value 
+    let deletEmailNaewsleter = document.getElementsByName("deleteOneEmail")[0].value
 
-        var data = new FormData()
+    var data = new FormData()
 
-        data.append("action","deletNewsletter");
-        data.append("deleteOneEmail", deletEmailNaewsleter);
-        makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result)=>{
-            console.log(result)
-        })
+    data.append("action", "deletNewsletter");
+    data.append("deleteOneEmail", deletEmailNaewsleter);
+    makeRequest("./../server/recievers/addTonewsletterReciver.php", "POST", data, (result) => {
+
+    })
 }
 
 // ### Show ProdcutList Section ### //
 
 function showProductList() {
+    var orderList = document.getElementById("orderList");
+    var insertProduct = document.getElementById("insertProduct");
+    var newsLetterList = document.getElementById("listNewsLetter");
+
+    orderList.style.display = "none";
+    insertProduct.style.display = "none";
+    newsLetterList.style.display = "none";
+
     var productList = document.getElementById("productList");
     if (productList.style.display === "none") {
         productList.style.display = "block";
@@ -245,10 +313,18 @@ function showProductList() {
         productList.style.display = "none";
     }
 }
-
+showProductList();
 // ### Show OrderList Seection ### //
 
 function showOrderList() {
+    var productList = document.getElementById("productList");
+    var insertProduct = document.getElementById("insertProduct");
+    var newsLetterList = document.getElementById("listNewsLetter");
+
+    productList.style.display = "none";
+    insertProduct.style.display = "none";
+    newsLetterList.style.display = "none";
+
     var orderList = document.getElementById("orderList");
     if (orderList.style.display === "none") {
         orderList.style.display = "block";
@@ -256,10 +332,20 @@ function showOrderList() {
         orderList.style.display = "none";
     }
 }
+showProductList();
+
 
 // ### InsertProdukt Section ### ///
 
 function showInsertSection() {
+    var productList = document.getElementById("productList");
+    var orderList = document.getElementById("orderList");
+    var newsLetterList = document.getElementById("listNewsLetter");
+
+    productList.style.display = "none";
+    orderList.style.display = "none";
+    newsLetterList.style.display = "none";
+
     var insertProduct = document.getElementById("insertProduct");
     if (insertProduct.style.display === "none") {
         insertProduct.style.display = "block";
@@ -268,9 +354,19 @@ function showInsertSection() {
     }
 }
 
+
 // ### showNewsLetterList Section ### //
 
 function showNewsLetterList() {
+
+    var productList = document.getElementById("productList");
+    var orderList = document.getElementById("orderList");
+    var insertProduct = document.getElementById("insertProduct");
+
+    productList.style.display = "none";
+    orderList.style.display = "none";
+    insertProduct.style.display = "none";
+
     var newsLetterList = document.getElementById("listNewsLetter");
     if (newsLetterList.style.display === "none") {
         newsLetterList.style.display = "block";

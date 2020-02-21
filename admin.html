@@ -7,54 +7,47 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="css/style.css">
         <script defer src="./js/logic.js"></script>
-        <title>PickBook</title>
+        <title>PickBook | Adminpanel</title>
     </head>
     <body>
+
+        <section id="button-section">
             <button onclick="showProductList();">Produkt Lista</button>
             <button onclick="showInsertSection();">Lägg till produkt</button>
             <button onclick="showOrderList();">Beställningar</button>
-            <button onclick="showNewsLetterList();">Newsletter</button>
-
-
-        <section id="insertProduct">
-                <h1 align="center">Lägg till produkt</h1>
-                Product Category:<input type="text" name="insertProductCategory">
-                
-                Product Name: <input type="text" name="insertProductName">
-                
-                Description: <input type="text" name="insertDescription">
-                
-                Quantity: <input type="text" name="insertQuantity">
-                
-                UnitPrice: <input type="text" name="insertUnitPrice">
-                
-                Discount: <input type="text" name="insertDiscount">
-                
-                Image: <input class="file" type="file" name="productImg" id="imageUploadInput">
-                <hr>
-                <input type="text" name="deleteOneProduct" placeholder="Skriv det produktens id nummer som du vill radera">
-                <button onclick="deleteProduct();">Delete Product</button>
-                <hr>
-                <input class="file" onclick="deleteAllProduct()" type="button" name="removeAllProduct" value="Ta bort allt">
-                <button onclick="insertProduct();">Add Product</button>
-                <hr>
+            <button onclick="showNewsLetterList();">Prenumerationer</button>
         </section>
 
         <section id="productList">
-                <h1 align="center">Produkt Lista</h1>
-                <table id="table">
-                    <tr>
-                        <th>Product id</th>
-                        <th>Product Category</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>UnitPrice</th>
-                        <th>Discount</th>
-                        <th>Image</th>
-                        <th>Edit</th>
-                    </tr>
-                </table>
+            <h1 align="center">Produkt Lista</h1>
+            <table id="table">
+                <tr>
+                    <th>Product id</th>
+                    <th>Product Category</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>UnitPrice</th>
+                    <th>Discount</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                </tr>
+            </table>
+            <input class="removeAllProduct" onclick="deleteAllProduct()" type="button" name="removeAllProduct" value="Ta bort allt">
+        </section>
+
+        <section id="insertProduct">
+                <h1 align="center">Lägg till produkt</h1>
+                <input type="text" name="insertProductCategory" placeholder="Product Category">
+                <input type="text" name="insertProductName" placeholder="Product Name">
+                <input type="text" name="insertDescription" placeholder=" Description">
+                <input type="text" name="insertQuantity" placeholder="Quantity">
+                <input type="text" name="insertUnitPrice" placeholder="UnitPrice">
+                <input type="text" name="insertDiscount" placeholder="Discount">
+                Image: <input class="file" type="file" name="productImg" id="imageUploadInput">
+                <hr>
+                <button onclick="insertProduct();">Add Product</button>
+                <hr>
         </section>
 
         <section id="orderList">
@@ -75,6 +68,7 @@
         </section>
 
         <section id="listNewsLetter">
+            <h1 align="center">Prenumerationer</h1>
                 <table id=newsLetter>
                         <tr>
                             <th>Username</th>
