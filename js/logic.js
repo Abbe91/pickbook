@@ -200,9 +200,6 @@ function getAllaNewsLetter() {
             row.appendChild(emailTD);
 
             table.appendChild(row);
-
-
-
         }
     })
 }
@@ -252,22 +249,32 @@ function showProductList() {
 // ### Show OrderList Seection ### //
 
 function showOrderList() {
-    var productList = document.getElementById("orderList");
-    if (productList.style.display === "none") {
-        productList.style.display = "block";
+    var orderList = document.getElementById("orderList");
+    if (orderList.style.display === "none") {
+        orderList.style.display = "block";
     } else {
-        productList.style.display = "none";
+        orderList.style.display = "none";
     }
 }
 
 // ### InsertProdukt Section ### ///
 
 function showInsertSection() {
-    var productList = document.getElementById("insertProduct");
-    if (productList.style.display === "none") {
-        productList.style.display = "block";
+    var insertProduct = document.getElementById("insertProduct");
+    if (insertProduct.style.display === "none") {
+        insertProduct.style.display = "block";
     } else {
-        productList.style.display = "none";
+        insertProduct.style.display = "none";
     }
 }
 
+// ### showNewsLetterList Section ### //
+
+function showNewsLetterList() {
+    var newsLetterList = document.getElementById("listNewsLetter");
+    if (newsLetterList.style.display === "none") {
+        newsLetterList.style.display = "block";
+    } else {
+        newsLetterList.style.display = "none";
+    }
+}

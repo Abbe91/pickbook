@@ -338,3 +338,6 @@ tr:nth-child(even) {
 #insertProduct{
   display: none;
 }
+#listNewsLetter{
+  display: none;
+}
