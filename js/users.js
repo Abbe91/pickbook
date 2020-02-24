@@ -38,9 +38,9 @@ function insertUser() {
     data.append("adress",insertUserAddress );
     data.append("postNu",insertUserPostNo );
     data.append("ZIPcode",insertUserZipcode );
-    data.append("city",insertUserCountry );
-    data.append("country",insertUserPassword );
-    data.append("Password",insertUserCity );
+    data.append("city",insertUserCity );
+    data.append("country",insertUserCountry );
+    data.append("Password",insertUserPassword );
     data.append("IsAdmin",insertUserIsAdmin );
     data.append("is_news_letter",insertUseris_news_letter );
     makeRequest('./../server/recievers/userReciever.php', "POST", data, (result)=>{

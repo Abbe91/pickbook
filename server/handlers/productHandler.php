@@ -68,25 +68,31 @@ function deleteAllProduct() {
         throw new Exception("No products to delete all product", 500);
         exit;
     }
+    
+    error_log($query->rowCount());
     return $query->rowCount();
 }
 
-function uppdate($product_cat,$product_name,$description,$quantity,$unit_price,$discount,$image) {
+function uppdate($product_id,$product_cat,$product_name,$description,$quantity,$unit_price,$discount,$image) {
     include_once("./../handlers/imageHandler.php");
     include_once("./../classes/database.php");
     $imageUrl = uploadImage($image);
-
-    $database = new Database();
-    $query = $database->connection->prepare("UPDATE products (product_cat,product_name,description,quantity,unit_price,discount,image) SET (:product_cat, :product_name, :description, :quantity, :unit_price, :discount, :image)");
-    $status = $query->execute(array(
-        "product_cat" => $product_cat,
-        "product_name"=>$product_name,
-        "description"=>$description,
-        "quantity"=>$quantity,
-        "unit_price"=>$unit_price,
-        "discount"=>$discount,
-        "image"=>$imageUrl
-    ));
+    try {
+        $database = new Database();
+        $query = $database->connection->prepare("UPDATE products  SET product_cat=:product_cat, product_name=:product_name, description=:description, quantity=:quantity, unit_price=:unit_price, discount=:discount, image=:image WHERE product_id = :product_id;");
+        $status = $query->execute(array(
+            "product_id" => $product_id,
+            "product_cat" => $product_cat,
+            "product_name"=>$product_name,
+            "description"=>$description,
+            "quantity"=>$quantity,
+            "unit_price"=>$unit_price,
+            "discount"=>$discount,
+            "image"=>$imageUrl
+        ));
+    } catch(PDOException $err) {
+        error_log($err);
+    }
 
     if (!$status){
         throw new Exception("Could not update product", 500);

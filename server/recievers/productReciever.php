@@ -21,12 +21,13 @@ try {
 
         }else if($_POST["action"] == "deleteAllProduct") {
             include_once("./../handlers/productHandler.php");              
-            echo json_encode(deleteAllProduct($_POST['removeAllProduct']));
+            echo json_encode(deleteAllProduct());
             exit;
 
         }else if($_POST["action"] == "updateProduct"){
             include_once("./../handlers/productHandler.php");              
-            echo json_encode(uppdate(
+             echo json_encode(uppdate(
+                $_POST["product_id"],
                 $_POST["product_cat"],
                 $_POST["product_name"],
                 $_POST["description"],

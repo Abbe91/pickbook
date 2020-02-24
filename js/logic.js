@@ -1,4 +1,6 @@
 
+let productToUpdate
+
 function makeRequest(url, method, formdata, callback) {
     fetch(url, {
         method: method,
@@ -60,16 +62,7 @@ function getAllProduct() {
                 deleteProduct(product_id);
             }
             updateButton.onclick = function () {
-                updateProduct(
-                    product_id,
-                    product_cat,
-                    product_name,
-                    description,
-                    quantity,
-                    unit_price,
-                    discount,
-                    image
-                )
+                prepareUpdateProduct(result[i])
             }
 
             row.appendChild(idTd);
@@ -85,10 +78,6 @@ function getAllProduct() {
 
             table.appendChild(row);
         }
-
-        // for(let i = 0; i < result.length; i++){
-        //     document.getElementById("product_id").innerHTML = JSON.stringify(result) ;
-        //  }
     })
 }
 getAllProduct();
@@ -185,38 +174,63 @@ function insertProduct() {
     })
 }
 
+function fillFormWithData(product) {
+    document.getElementsByName("insertProductCategory")[0].value = product.product_cat
+    document.getElementsByName("insertProductName")[0].value = product.product_name
+    document.getElementsByName("insertDescription")[0].value = product.description
+    document.getElementsByName("insertQuantity")[0].value = product.quantity
+    document.getElementsByName("insertUnitPrice")[0].value = product.unit_price
+    document.getElementsByName("insertDiscount")[0].value = product.discount
+    document.getElementsByName("productImg")[0].files[0] = product.image
+}
+
+function prepareUpdateProduct(product) {
+    console.log(product);
+    productToUpdate = product
+    showInsertSection();
+    fillFormWithData(product);
+
+    document.getElementById("productInsertRubric").innerText ="Uppdatera Produkt";
+    const insertBtn = document.getElementById("insertProductButton");
+    insertBtn.style.display = "none";
+};
+
 function updateProduct() {
 
-    let insertProductCategory = document.getElementsByName("insertProductCategory")[0].value
-    let insertProductName = document.getElementsByName("insertProductName")[0].value
-    let insertDescription = document.getElementsByName("insertDescription")[0].value
-    let insertQuantity = document.getElementsByName("insertQuantity")[0].value
-    let insertUnitPrice = document.getElementsByName("insertUnitPrice")[0].value
-    let insertDiscount = document.getElementsByName("insertDiscount")[0].value
-    let insertImage = document.getElementsByName("productImg")[0].files[0]
+ productToUpdate = {
+        product_id: productToUpdate.product_id,
+        product_cat: document.getElementsByName("insertProductCategory")[0].value,
+        product_name: document.getElementsByName("insertProductName")[0].value,
+        description: document.getElementsByName("insertDescription")[0].value,
+        quantity: document.getElementsByName("insertQuantity")[0].value,
+        unit_price: document.getElementsByName("insertUnitPrice")[0].value,
+        discount: document.getElementsByName("insertDiscount")[0].value,
+        image:document.getElementsByName("productImg")[0].files[0]
+    };
 
-    var data = new FormData()
+        var data = new FormData();
 
-    data.append("action", "updateProduct");
-    data.append("product_cat", insertProductCategory);
-    data.append("product_name", insertProductName);
-    data.append("description", insertDescription);
-    data.append("quantity", insertQuantity);
-    data.append("unit_price", insertUnitPrice);
-    data.append("discount", insertDiscount);
-    data.append("image", insertImage);
+        data.append("action", "updateProduct");
+        data.append("product_id", productToUpdate.product_id);
+        data.append("product_cat", productToUpdate.product_cat);
+        data.append("product_name", productToUpdate.product_name);
+        data.append("description", productToUpdate.description);
+        data.append("quantity", productToUpdate.quantity);
+        data.append("unit_price", productToUpdate.unit_price);
+        data.append("discount", productToUpdate.discount);
+        data.append("image", productToUpdate.image);
 
     makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
-
-        if (result) {
-            getAllProduct();            
+        console.log(result);
+        if(result){
+            location.reload();
+            alert("Produkten har uppdaterat");
         }
     })
 }
 
 
 function deleteProduct(id) {
-
     var data = new FormData()
     data.append("action", "deleteOneProduct");
     data.append("product_id", id);
@@ -234,16 +248,17 @@ function deleteAllProduct() {
     data.append("action", "deleteAllProduct");
 
     makeRequest("./../server/recievers/productReciever.php", "POST", data, (result) => {
-    
+        console.log(result)
+        if(result){
+            location.reload();
+            alert("alla produkter tagits bort");
+        }
     })
 }
 
 function getAllaNewsLetter() {
-
     makeRequest("./../server/recievers/newsLetterReciever.php?action=getNewsUser", "GET", null, (result) => {
-
         let table = document.getElementById("newsLetter")
-
         for (let i = 0; i < result.length; i++) {
 
             let userName = (result[i].fulName);

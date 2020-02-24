@@ -326,11 +326,9 @@ tr:nth-child(even) {
 #button-section{
   display: flex;
 }
-<<<<<<< HEAD
 #insertProduct{
   display: none;
 }
-=======
 .removeAllProduct{
   background-color: #B35462;
   color: #fff;
@@ -341,4 +339,3 @@ tr:nth-child(even) {
   width: 100%;
   opacity: 0.9;
 }
->>>>>>> delteAndUpdate

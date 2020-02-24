@@ -33,11 +33,11 @@
                     <th>Edit</th>
                 </tr>
             </table>
-            <input class="removeAllProduct" onclick="deleteAllProduct()" type="button" name="removeAllProduct" value="Ta bort allt">
+            <input class="removeAllProduct" onclick="deleteAllProduct()" type="button" value="Ta bort allt">
         </section>
 
         <section id="insertProduct">
-                <h1 align="center">Lägg till produkt</h1>
+                <h1 align="center" id="productInsertRubric">Lägg till produkt</h1>
                 <input type="text" name="insertProductCategory" placeholder="Product Category">
                 <input type="text" name="insertProductName" placeholder="Product Name">
                 <input type="text" name="insertDescription" placeholder=" Description">
@@ -46,7 +46,8 @@
                 <input type="text" name="insertDiscount" placeholder="Discount">
                 Image: <input class="file" type="file" name="productImg" id="imageUploadInput">
                 <hr>
-                <button onclick="insertProduct();">Add Product</button>
+                <button id="insertProductButton" onclick="insertProduct();">Spara</button>
+                <button id="insertProductButton" onclick="updateProduct();">Updatera</button>
                 <hr>
         </section>
 
