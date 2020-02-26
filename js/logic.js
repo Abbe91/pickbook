@@ -16,11 +16,9 @@ function makeRequest(url, method, formdata, callback) {
 
 function getAllProduct() {
     makeRequest("./../server/recievers/productReciever.php?action=getAll", "GET", null, (result) => {
-
         let table = document.getElementById("table")
 
         for (let i = 0; i < result.length; i++) {
-
             let product_id = (result[i].product_id);
             let product_cat = (result[i].product_cat);
             let product_name = (result[i].product_name);
@@ -84,11 +82,9 @@ getAllProduct();
 
 function showAllOrderOnTable() {
     makeRequest("./../server/recievers/orderReciever.php?action=getAllOrder", "GET", null, (result) => {
-
         let orderTable = document.getElementById("orderTable");
 
         for (let i = 0; i < result.length; i++) {
-
             let orderId = (result[i].orderId);
             let users_id = (result[i].users_id);
             let orderDate = (result[i].orderDate);
@@ -125,11 +121,9 @@ function showAllOrderOnTable() {
 }
 showAllOrderOnTable();
 
-
-
 function insertProduct() {
-
-    let insertProductCategory = document.getElementsByName("insertProductCategory")[0].value
+    let categorySelect = document.getElementById("categorySelect")
+    let insertProductCategory = categorySelect.options[categorySelect.selectedIndex].value
     let insertProductName = document.getElementsByName("insertProductName")[0].value
     let insertDescription = document.getElementsByName("insertDescription")[0].value
     let insertQuantity = document.getElementsByName("insertQuantity")[0].value
@@ -148,7 +142,7 @@ function insertProduct() {
     data.append("discount", insertDiscount);
     data.append("image", insertImage);
 
-    if (insertProductCategory == "") {
+     if (insertProductCategory == "") {
         alert("Välj category!")
     } if (insertProductName == "") {
         alert("Skriv produknamn")
@@ -160,9 +154,9 @@ function insertProduct() {
         alert("Ange pris för produkten som vill spara")
     } if (insertDiscount == "") {
         alert("Ange rabat för produkten")
-    }
+    } 
 
-    makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
+     makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
         if (result == true) {
             alert("Produkten har sparat i databasen")
         } else {
@@ -171,21 +165,21 @@ function insertProduct() {
         if (result === true) {
             location.reload();
         }
-    })
+    }) 
 }
 
 function fillFormWithData(product) {
-    document.getElementsByName("insertProductCategory")[0].value = product.product_cat
+    document.getElementById("categorySelect").value = product.product_cat
     document.getElementsByName("insertProductName")[0].value = product.product_name
     document.getElementsByName("insertDescription")[0].value = product.description
     document.getElementsByName("insertQuantity")[0].value = product.quantity
     document.getElementsByName("insertUnitPrice")[0].value = product.unit_price
     document.getElementsByName("insertDiscount")[0].value = product.discount
     document.getElementsByName("productImg")[0].files[0] = product.image
-}
+};
 
 function prepareUpdateProduct(product) {
-    console.log(product);
+    //console.log(product);
     productToUpdate = product
     showInsertSection();
     fillFormWithData(product);
@@ -196,10 +190,9 @@ function prepareUpdateProduct(product) {
 };
 
 function updateProduct() {
-
  productToUpdate = {
         product_id: productToUpdate.product_id,
-        product_cat: document.getElementsByName("insertProductCategory")[0].value,
+        product_cat: document.getElementById("categorySelect").value,
         product_name: document.getElementsByName("insertProductName")[0].value,
         description: document.getElementsByName("insertDescription")[0].value,
         quantity: document.getElementsByName("insertQuantity")[0].value,
@@ -221,14 +214,13 @@ function updateProduct() {
         data.append("image", productToUpdate.image);
 
     makeRequest('./../server/recievers/productReciever.php', "POST", data, (result) => {
-        console.log(result);
+        //console.log(result);
         if(result){
             location.reload();
             alert("Produkten har uppdaterat");
         }
     })
 }
-
 
 function deleteProduct(id) {
     var data = new FormData()
@@ -259,11 +251,10 @@ function deleteAllProduct() {
 function getAllaNewsLetter() {
     makeRequest("./../server/recievers/newsLetterReciever.php?action=getNewsUser", "GET", null, (result) => {
         let table = document.getElementById("newsLetter")
-        for (let i = 0; i < result.length; i++) {
 
+        for (let i = 0; i < result.length; i++) {
             let userName = (result[i].fulName);
             let email = (result[i].email);
-
             let row = document.createElement("tr");
             let userNameTD = document.createElement("td");
             let emailTD = document.createElement("td");
@@ -280,10 +271,7 @@ function getAllaNewsLetter() {
 }
 getAllaNewsLetter();
 
-
-
 function sendNewsletter() {
-
     let emailForNewsLetter = document.getElementsByName("emailForNewsLetter")[0].value
     let nameForNewsLetter = document.getElementsByName("nameForNewsLetter")[0].value
 
@@ -310,8 +298,26 @@ function deletNewsletter() {
     })
 }
 
-// ### Show ProdcutList Section ### //
+function getAllCategory() {
+    makeRequest("./../server/recievers/getCategoryReciver.php?action=getAllCategory", "GET", null, (result) => {
+        
+        let selectElement = document.getElementById("categorySelect")
 
+        for (let i = 0; i < result.length; i++) {
+
+            let categoryName = (result[i].categoryName);
+
+            let optionElement = document.createElement("option")
+            optionElement.innerText = categoryName
+            optionElement.value = result[i].category_id
+
+            selectElement.appendChild(optionElement)
+        }
+    }) 
+}
+getAllCategory();
+
+// ### Show ProdcutList Section ### //
 function showProductList() {
     var orderList = document.getElementById("orderList");
     var insertProduct = document.getElementById("insertProduct");
@@ -329,16 +335,18 @@ function showProductList() {
     }
 }
 showProductList();
-// ### Show OrderList Seection ### //
 
+// ### Show OrderList Seection ### //
 function showOrderList() {
     var productList = document.getElementById("productList");
     var insertProduct = document.getElementById("insertProduct");
     var newsLetterList = document.getElementById("listNewsLetter");
+    var insertCategory = document.getElementById("insertCategory");
 
     productList.style.display = "none";
     insertProduct.style.display = "none";
     newsLetterList.style.display = "none";
+    insertCategory.style.display = "none";
 
     var orderList = document.getElementById("orderList");
     if (orderList.style.display === "none") {
@@ -349,17 +357,17 @@ function showOrderList() {
 }
 showProductList();
 
-
 // ### InsertProdukt Section ### ///
-
 function showInsertSection() {
     var productList = document.getElementById("productList");
     var orderList = document.getElementById("orderList");
     var newsLetterList = document.getElementById("listNewsLetter");
+    var insertCategory = document.getElementById("insertCategory");
 
     productList.style.display = "none";
     orderList.style.display = "none";
     newsLetterList.style.display = "none";
+    insertCategory.style.display = "none";
 
     var insertProduct = document.getElementById("insertProduct");
     if (insertProduct.style.display === "none") {
@@ -369,18 +377,17 @@ function showInsertSection() {
     }
 }
 
-
 // ### showNewsLetterList Section ### //
-
 function showNewsLetterList() {
-
     var productList = document.getElementById("productList");
     var orderList = document.getElementById("orderList");
     var insertProduct = document.getElementById("insertProduct");
+    var insertCategory = document.getElementById("insertCategory");
 
     productList.style.display = "none";
     orderList.style.display = "none";
     insertProduct.style.display = "none";
+    insertCategory.style.display = "none";
 
     var newsLetterList = document.getElementById("listNewsLetter");
     if (newsLetterList.style.display === "none") {
@@ -389,6 +396,26 @@ function showNewsLetterList() {
         newsLetterList.style.display = "none";
     }
 }
+// ### showshowInsertCategory Section ### //
+function showInsertCategory() {
+    var productList = document.getElementById("productList");
+    var orderList = document.getElementById("orderList");
+    var insertProduct = document.getElementById("insertProduct");
+    var insertCategory = document.getElementById("insertCategory");
+
+    productList.style.display = "none";
+    orderList.style.display = "none";
+    insertProduct.style.display = "none";
+    insertCategory.style.display = "none";
+
+    var insertCategory = document.getElementById("insertCategory");
+    if (insertCategory.style.display === "none") {
+        insertCategory.style.display = "block";
+    } else {
+        insertCategory.style.display = "none";
+    }
+}
+
 
 function insertUser() {
     let insertUserName = document.getElementsByName("insertUserName")[0].value
@@ -404,6 +431,7 @@ function insertUser() {
     let insertUserIsAdmin = document.getElementsByName("insertUserIsAdmin")[0].value
    
     var data = new FormData()
+
     data.append("action", "add");
     data.append("fulName",insertUserName );
     data.append("email",insertUserEmail );
@@ -416,6 +444,7 @@ function insertUser() {
     data.append("Password",insertUserCity );
     data.append("IsAdmin",insertUserIsAdmin );
     data.append("is_news_letter",insertUseris_news_letter );
+
     makeRequest('./../server/recievers/userReciever.php', "POST", data, (result)=>{
         if(result){
             console.log(result);
@@ -423,7 +452,6 @@ function insertUser() {
         }
         console.log(result)
     }) 
-
 }
 
 function login(){
@@ -431,6 +459,7 @@ function login(){
     let inlogningPassword = document.getElementsByName("mypassword")[0].value
 
     var data = new FormData()
+
     data.append("action", "add");
     data.append("myemail",inlogningEmail );
     data.append("mypassword",inlogningPassword );
@@ -442,5 +471,34 @@ function login(){
             // TODO: show prompt about invalid username or password
         }
     }) 
+}
 
+// ### Serach Function For AdminPanel ### //
+$(document).ready(function(){
+    $("#searchInput").on("keyup", function() {
+      const value = $(this).val().toLowerCase();
+      $("#table tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+
+  function insertCategory() {
+    let insertCategoryProductt_id = document.getElementsByName("insertCategoProductID")[0].value
+    let insertCategoryName = document.getElementsByName("insertCategoryName")[0].value
+    let insertCategoryDescription = document.getElementsByName("insertCategoryDescription")[0].value
+    
+    var data = new FormData()
+
+    data.append("action", "InsertCategory");
+    data.append("productt_id", insertCategoryProductt_id);
+    data.append("categoryName", insertCategoryName);
+    data.append("categoryDescription", insertCategoryDescription);
+ 
+
+     makeRequest('./../server/recievers/InsertCategoryReciever.php', "POST", data, (result) => {
+        
+        
+    })
 }

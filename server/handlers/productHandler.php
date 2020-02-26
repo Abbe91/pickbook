@@ -1,5 +1,4 @@
 <?php
-
 function add($product_cat,$product_name,$description,$quantity,$unit_price,$discount,$image) {
     include_once("./../handlers/imageHandler.php");
     include_once("./../classes/database.php");
@@ -38,7 +37,6 @@ function getAll() {
     return $result;
 }
 
-
 function deleteOneProduct($product_id) {
     include_once("./../classes/database.php");
     $database = new Database();
@@ -56,7 +54,6 @@ function deleteOneProduct($product_id) {
     return $query->rowCount();
 }
 
-
 function deleteAllProduct() {
     include_once("./../classes/database.php");
     $database = new Database();
@@ -68,7 +65,7 @@ function deleteAllProduct() {
         throw new Exception("No products to delete all product", 500);
         exit;
     }
-    
+
     error_log($query->rowCount());
     return $query->rowCount();
 }
@@ -100,5 +97,4 @@ function uppdate($product_id,$product_cat,$product_name,$description,$quantity,$
     }
     return $status;
 }
-
 ?>

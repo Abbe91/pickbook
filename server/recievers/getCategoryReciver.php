@@ -2,9 +2,9 @@
 try{
     if($_SERVER["REQUEST_METHOD"] == "GET") {
 
-        if($_GET["action"] == "getAllOrder") { 
-            include_once("./../handlers/orderHandler.php");              
-            echo json_encode(getAllOrder());
+        if($_GET["action"] == "getAllCategory") { 
+            include_once("./../handlers/getCategoryHandler.php");              
+            echo json_encode(getAllCategory());
             exit;
         }  
     } else {
