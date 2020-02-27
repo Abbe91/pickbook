@@ -498,7 +498,43 @@ $(document).ready(function(){
  
 
      makeRequest('./../server/recievers/InsertCategoryReciever.php', "POST", data, (result) => {
-        
-        
+        if(result == true){
+            alert("Kategori har sparat")
+            location.reload();
+        }
     })
 }
+function showCategoryOnTable() {
+    makeRequest("./../server/recievers/getCategoryReciver.php?action=getAllCategory", "GET", null, (result) => {
+        
+        let categoryTable = document.getElementById("categoryTable");
+
+        for (let i = 0; i < result.length; i++) {
+            let categoryId = (result[i].category_id);
+            let producttId = (result[i].productt_id);
+            let categoryName = (result[i].categoryName);
+            let categoryDescription	 = (result[i].categoryDescription	);
+
+            let row = document.createElement("tr");
+
+            let categoryIdTd = document.createElement("td");
+            let producttIdTd = document.createElement("td");
+            let categoryNameTd = document.createElement("td");
+            let categoryDescriptionTd = document.createElement("td");
+
+            categoryIdTd.innerText = categoryId;
+            producttIdTd.innerText = producttId;
+            categoryNameTd.innerText = categoryName;
+            categoryDescriptionTd.innerText = categoryDescription;
+
+            row.appendChild(categoryIdTd);
+            row.appendChild(producttIdTd);
+            row.appendChild(categoryNameTd);
+            row.appendChild(categoryDescriptionTd);
+
+            categoryTable.appendChild(row);
+        }
+    })
+
+}
+showCategoryOnTable();

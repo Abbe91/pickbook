@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous"> <!-- ### Fontawsome Icon Bibliotek ###-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- ### CDN Link For Jquery  ###-->
         <link rel="stylesheet" href="css/style.css">
         <script defer src="./js/logic.js"></script>
@@ -21,7 +22,7 @@
 
         <section id="productList">
             <h1 align="center">Produkt Lista</h1>
-            <input id="searchInput" type="text" placeholder="Sök Produkt..">
+            <input  id="searchInput" type="text" placeholder="Sök Produkt..">
             <table id="table">
                 <tr>
                     <th>Product id</th>
@@ -90,8 +91,18 @@
                 <input type="text" name="insertCategoProductID" placeholder="ProductID">
                 <input type="text" name="insertCategoryName" placeholder="Category Name">
                 <input type="text" name="insertCategoryDescription" placeholder="Category Description">
-                
+
                 <button id="insertProductButton" onclick="insertCategory();">Spara</button>
+<hr>
+                <table id="categoryTable">
+                    <tr>
+                        <th>Category id</th>
+                        <th>productt id</th>
+                        <th>Category name</th>
+                        <th>Category description</th>
+                    </tr>
+                </table>
+
         </section>
     </body>
 </html>

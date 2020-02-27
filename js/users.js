@@ -46,7 +46,7 @@ function insertUser() {
     makeRequest('./../server/recievers/userReciever.php', "POST", data, (result)=>{
         if(result){
             console.log(result);
-            window.location = "/login.php"
+            window.location = "/login.html"
         }
         console.log(result)
     }) 
