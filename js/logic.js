@@ -501,6 +501,8 @@ $(document).ready(function(){
         if(result == true){
             alert("Kategori har sparat")
             location.reload();
+        }else{
+            alert("Det gick inte spara kategori")
         }
     })
 }
@@ -516,21 +518,38 @@ function showCategoryOnTable() {
             let categoryDescription	 = (result[i].categoryDescription	);
 
             let row = document.createElement("tr");
-
+            
             let categoryIdTd = document.createElement("td");
             let producttIdTd = document.createElement("td");
             let categoryNameTd = document.createElement("td");
             let categoryDescriptionTd = document.createElement("td");
+            let deleteButtonForCategory = document.createElement("button");
+            let updateButtonForCategory = document.createElement("button");
 
+            row.id = categoryId;
             categoryIdTd.innerText = categoryId;
             producttIdTd.innerText = producttId;
             categoryNameTd.innerText = categoryName;
             categoryDescriptionTd.innerText = categoryDescription;
+            deleteButtonForCategory.style.background = "#B35462";
+            updateButtonForCategory.style.background = "#66B375";
+
+            deleteButtonForCategory.innerText = "Delete";
+            updateButtonForCategory.innerText = "Update";
+            
+            deleteButtonForCategory.onclick = function () {
+                deleteCategory(categoryId);
+            }
+            updateButtonForCategory.onclick = function () {
+                //prepareUpdateProduct(result[i])
+            }
 
             row.appendChild(categoryIdTd);
             row.appendChild(producttIdTd);
             row.appendChild(categoryNameTd);
             row.appendChild(categoryDescriptionTd);
+            row.appendChild(deleteButtonForCategory);
+            row.appendChild(updateButtonForCategory);
 
             categoryTable.appendChild(row);
         }
@@ -538,3 +557,16 @@ function showCategoryOnTable() {
 
 }
 showCategoryOnTable();
+
+function deleteCategory(id) {
+    var data = new FormData()
+    data.append("action", "deleteOneCategory");
+    data.append("category_id", id);
+
+    makeRequest("./../server/recievers/getCategoryReciver.php", "POST", data, (result) => {
+        if (result) {
+            const row = document.getElementById(id);
+            row.remove()
+        }
+    })
+}
