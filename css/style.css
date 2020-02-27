@@ -247,6 +247,8 @@
   .cancelbtn, .signupbtn {
     float: left;
     width: 50%;
+    position: relative;
+    left: 210px;
   }
   
   .container {
@@ -306,22 +308,28 @@
   }
 
 /* ### Table Style ### */
+.newsletterTable{
+  justify-content: center;
+  display: flex;
+  padding: 1em;
+  border-collapse: collapse;
+  position: relative;
+  left: 210px;
+}
 
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
+
 }
 
 td, th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+
 
 #button-section{
   display: flex;
