@@ -1,9 +1,114 @@
+<<<<<<< HEAD
 <?php include_once("./server/handlers/productHandler.php");?>
 <?php //include_once("./server/classes/database.php")?>
+=======
+>>>>>>> e0ec8df401592292a2ff389324924aee8a4fb474
 
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous"> <!-- ### Fontawsome Icon Bibliotek ###-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- ### CDN Link For Jquery  ###-->
+        <link rel="stylesheet" href="css/style.css">
+        <script defer src="./js/logic.js"></script>
+        <title>PickBook | Adminpanel</title>
+    </head>
+    <body>
+        <section id="button-section">
+            <button onclick="showProductList();">Produkt Lista</button>
+            <button onclick="showInsertSection();">Lägg till produkt</button>
+            <button onclick="showInsertCategory();">Lägg till kategori</button>
+            <button onclick="showOrderList();">Beställningar</button>
+            <button onclick="showNewsLetterList();">Prenumerationer</button>
+        </section>
 
+        <section id="productList">
+            <h1 align="center">Produkt Lista</h1>
+            <input  id="searchInput" type="text" placeholder="Sök Produkt..">
+            <table id="table">
+                <tr>
+                    <th>Product id</th>
+                    <th>Product Category</th>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>UnitPrice</th>
+                    <th>Discount</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                </tr>
+            </table>
+            <input class="removeAllProduct" onclick="deleteAllProduct()" type="button" value="Ta bort allt">
+        </section>
+
+        <section id="insertProduct">
+                <h1 align="center" id="productInsertRubric">Lägg till produkt</h1>
+
+                <select id="categorySelect">
+                    <option>Välj Kategori</option>
+                </select>
+                
+                <input type="text" name="insertProductName" placeholder="Product Name">
+                <input type="text" name="insertDescription" placeholder=" Description">
+                <input type="text" name="insertQuantity" placeholder="Quantity">
+                <input type="text" name="insertUnitPrice" placeholder="UnitPrice">
+                <input type="text" name="insertDiscount" placeholder="Discount">
+                Image: <input class="file" type="file" name="productImg" id="imageUploadInput">
+                <hr>
+                <button id="insertProductButton" onclick="insertProduct();">Spara</button>
+                <button id="insertProductButton" onclick="updateProduct();">Updatera</button>
+                <hr>
+        </section>
+
+        <section id="orderList">
+
+            <h1 align="center">Beställningar</h1>
+
+            <table id="orderTable">
+                    <tr>
+                            <th>orderId</th>
+                            <th>users_id</th>
+                            <th>orderDate</th>
+                            <th>shippingaddress</th>
+                            <th>wight</th>
+                            <th>total_price</th>
+                        </tr>
+            </table>
+
+        </section>
+
+        <section id="listNewsLetter">
+            <h1 align="center">Prenumerationer</h1>
+                <table id=newsLetter>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>   
+                        </tr>
+                </table>
+        </section>
+
+        <section id="insertCategory">
+                <h1 align="center" id="productInsertRubric">Lägg till kategori</h1>
+                
+                <input type="text" name="insertCategoProductID" placeholder="ProductID">
+                <input type="text" name="insertCategoryName" placeholder="Category Name">
+                <input type="text" name="insertCategoryDescription" placeholder="Category Description">
+
+                <button id="insertProductButton" onclick="insertCategory();">Spara</button>
+<hr>
+                <table id="categoryTable">
+                    <tr>
+                        <th>Category id</th>
+                        <th>productt id</th>
+                        <th>Category name</th>
+                        <th>Category description</th>
+                    </tr>
+                </table>
+
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,3 +182,8 @@
 </body>
 
 </html>
+=======
+        </section>
+    </body>
+</html>
+>>>>>>> e0ec8df401592292a2ff389324924aee8a4fb474

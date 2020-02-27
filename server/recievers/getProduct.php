@@ -4,7 +4,7 @@ $method = isset($_SERVER['REQUEST_METHOD']);
 if($method){
     if($method == 'GET') {
         
-
+        
         
         if(isset($_GET['categories'])) {
             try{       

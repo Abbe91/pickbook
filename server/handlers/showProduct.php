@@ -33,11 +33,16 @@ if (mysqli_connect_errno()) {
                 <div class='col-md-3 col-sm-6'>
                     <div class='product-grid4'>
                         <div class='product-content'>
-                          <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
+<<<<<<< HEAD
                            <img width='130' height='200' src='/$pro_image' alt='image' />
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
+=======
+                           <div class='price'>$$pro_price<span> </span></div>
+                           <img width='130' height='200' src='../../img/product_img/$pro_image' alt='image' />                           
+                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+>>>>>>> e0ec8df401592292a2ff389324924aee8a4fb474
                         </div>
                     </div> 
                 </div>";
@@ -57,16 +62,18 @@ if (mysqli_connect_errno()) {
         {
             $category_id=$row_cat['category_id'];
             $categoryName=$row_cat['categoryName'];
-            echo "<a href='index.php?category_id=$category_id'>$categoryName</a>";
+            echo "<a href='productSidan.php?category_id=$category_id'>$categoryName</a>";
         }
         
     }
+
+
+
 
     //display products when set category_id 
     function getCatPro()
     {   
         global $dsn;
-        
         if(isset($_GET['category_id'])){
             
             $pro_cat_id=$_GET['category_id'];
@@ -110,11 +117,16 @@ if (mysqli_connect_errno()) {
                 <div class='col-md-3 col-sm-6'>
                     <div class='product-grid4'>
                         <div class='product-content'>
-                          <img width='130' height='200' src='/$pro_image' alt='image' />
                            <h3 class='title'>$pro_title</h3>
+<<<<<<< HEAD
                            <img width='130' height='200' src='/$pro_image' alt='image' />
                            <div class='price'>$$pro_price<span> </span></div>                           
                            <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
+=======
+                           <div class='price'>$$pro_price<span> </span></div>
+                           <img width='130' height='200' src='../../img/product_img/$pro_image' alt='image' />                       
+                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+>>>>>>> e0ec8df401592292a2ff389324924aee8a4fb474
                         </div>
                     </div> 
                 </div>";
@@ -141,11 +153,16 @@ if (mysqli_connect_errno()) {
 			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];	
 		}
 		return $ip;
-    }
+	}
 
 
 
-    
+
+
+
+
+
+
 
 
 
