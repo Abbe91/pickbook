@@ -61,7 +61,7 @@ session_start();
         </div>
     </header>
     <div id="catNav" class="topnav">
-    <a onclick="" class="active" href="#home">Home</a>
+    <a onclick="" class="active" href="./index.php">Home</a>
 
          <?php 
             getCat();
