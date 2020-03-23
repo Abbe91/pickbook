@@ -36,7 +36,7 @@ if (mysqli_connect_errno()) {
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>
                            <img width='130' height='200' src='$pro_image' alt='image' />                           
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
@@ -114,50 +114,13 @@ if (mysqli_connect_errno()) {
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>
                            <img width='130' height='200' src='$pro_image' alt='image' />                       
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <a class='add-to-cart' href='details.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
             }
         }
     }
-
-
-	//getting IP User
-	function getIp()
-	{
-//whether ip is from remote address		
-		$ip=$_SERVER['REMOTE_ADDR'];
-
-//whether ip is from share internet		
-		if(!empty($_SERVER['HTTP_CLIENT_IP']))
-		{
-			$ip=$_SERVER['HTTP_CLIENT_IP'];
-		}
-
-//whether ip is from proxy		
-		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-		{
-			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];	
-		}
-		return $ip;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ?>

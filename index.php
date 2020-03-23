@@ -1,6 +1,7 @@
 <?php 
 session_start();
 	include('../pickbook/server/handlers/showProduct.php');
+	include('../pickbook/server/handlers/cartHandler.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +23,7 @@ session_start();
         <div class="header">
             <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
             <div class="header-center">
+           
             </div>
             <div class="header-right">
                 <a><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></a>
@@ -56,7 +58,25 @@ session_start();
                 <a></a>
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
-                <a class="active" href="#home"><img src="./img/shopping_cart.png" style="width: 30px;" alt=""></a>
+                <a class="active" href="#home">
+                    
+                <?php  
+				if(isset($_GET['add_cart'])){
+				    cart();
+                     echo "Added to cart :";
+                     echo "<span > </span>" ;
+                     total_items();
+                     echo "<span> </span>" ;
+                     echo "Total price :";
+                     total_price();
+				}
+			 ?>
+                
+                <img src="./img/shopping_cart.png" style="width: 30px;" alt="">
+            
+            
+            
+            </a>
             </div>
         </div>
     </header>
@@ -65,7 +85,7 @@ session_start();
 
          <?php 
             getCat();
-
+            
          ?>
     </div>
     <!-- <section>
