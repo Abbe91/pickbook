@@ -20,7 +20,7 @@ session_start();
 <body >
     <header>
         <div class="header">
-            <a href="#default" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
             <div class="header-center">
             </div>
             <div class="header-right">
