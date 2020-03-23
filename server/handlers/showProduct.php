@@ -114,7 +114,7 @@ if (mysqli_connect_errno()) {
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>
                            <img width='130' height='200' src='$pro_image' alt='image' />                       
-                           <a class='add-to-cart' href='details.php?add_cart=$pro_id'>ADD TO CART</a>
+                           <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";

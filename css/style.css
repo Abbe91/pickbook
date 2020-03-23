@@ -82,7 +82,7 @@
   
     .topnav {
       overflow: hidden;
-      background-color: #F2EFEB;
+      background-color: #ffffff;
     }
     
     .topnav a {
@@ -171,10 +171,9 @@
     position: fixed;
     position: relative;
     font-family: AkzidenzGrotesk;
-    left: 0;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 160px;
     background-color: rgb(38, 25, 28);
     color: white;
     text-align: center;
@@ -188,6 +187,9 @@
       }
       .header-right {
         float: none;
+      }
+      .footer{
+        display: none;
       }
     }
   .Newsletter{
@@ -314,14 +316,10 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 #button-section{
   display: flex;
