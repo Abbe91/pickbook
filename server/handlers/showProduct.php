@@ -35,8 +35,8 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>
-                           <img width='130' height='200' src='../../img/product_img/$pro_image' alt='image' />                           
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <img width='130' height='200' src='$pro_image' alt='image' />                           
+                           <a class='add-to-cart' href='index.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
@@ -56,7 +56,7 @@ if (mysqli_connect_errno()) {
         {
             $category_id=$row_cat['category_id'];
             $categoryName=$row_cat['categoryName'];
-            echo "<a href='productSidan.php?category_id=$category_id'>$categoryName</a>";
+            echo "<a href='index.php?category_id=$category_id'>$categoryName</a>";
         }
         
     }
@@ -113,51 +113,14 @@ if (mysqli_connect_errno()) {
                         <div class='product-content'>
                            <h3 class='title'>$pro_title</h3>
                            <div class='price'>$$pro_price<span> </span></div>
-                           <img width='130' height='200' src='../../img/product_img/$pro_image' alt='image' />                       
-                           <a class='add-to-cart' href='#'>ADD TO CART</a>
+                           <img width='130' height='200' src='$pro_image' alt='image' />                       
+                           <a class='add-to-cart' href='details.php?add_cart=$pro_id'>ADD TO CART</a>
                         </div>
                     </div> 
                 </div>";
             }
         }
     }
-
-
-	//getting IP User
-	function getIp()
-	{
-//whether ip is from remote address		
-		$ip=$_SERVER['REMOTE_ADDR'];
-
-//whether ip is from share internet		
-		if(!empty($_SERVER['HTTP_CLIENT_IP']))
-		{
-			$ip=$_SERVER['HTTP_CLIENT_IP'];
-		}
-
-//whether ip is from proxy		
-		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-		{
-			$ip=$_SERVER['HTTP_X_FORWARDED_FOR'];	
-		}
-		return $ip;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ?>
