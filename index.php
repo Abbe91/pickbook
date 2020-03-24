@@ -58,7 +58,7 @@ session_start();
                 <a></a>
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
-                <a class="active" href="#home">
+                <a class="active" href="./cart.php">
                     
                 <?php  
 				if(isset($_GET['add_cart'])){
@@ -71,8 +71,7 @@ session_start();
                      total_price();
 				}
 			 ?>
-                
-                <img src="./img/shopping_cart.png" style="width: 30px;" alt="">
+             <img src="./img/shopping_cart.png" style="width: 30px;" alt="">
             
             
             
