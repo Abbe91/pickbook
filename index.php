@@ -15,13 +15,12 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer src="./js/logic.js"></script>
-
 </head>
 
 <body >
     <header>
         <div class="header">
-            <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/logo.png" style="width:180px;" alt=""></a>
             <div class="header-center">
            
             </div>
@@ -59,6 +58,8 @@ session_start();
                 <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
                 <a></a>
                 <a class="active" href="./cart.php">
+
+              
                     
                 <?php  
 				if(isset($_GET['add_cart'])){
@@ -87,16 +88,7 @@ session_start();
             
          ?>
     </div>
-    <!-- <section>
-        <div style="display: flex;">
-            <div>
-                <span style="font-family: Shaky Hand Some Comic; display:flex; flex-direction:column; margin-top: 6em; margin-left:20%; font-size:35px; font-weight: bold; 	color: rgba(31,64,45,1);">EDITORIAL DESIGN FROM THE WORLD’S BEST NEWSROOMS</span>
-            </div>
-            <div>
-                <img id="Hero_book" style="width: 590px; margin: 20px;" src="./img/NewspaperDesign_gestalten_book@2x.png">
-            </div>
-        </div>
-    </section> -->
+    
     <section class="product">
         <div class="container">
         <h1 class="title-h">Latest Products</h1>
@@ -109,156 +101,49 @@ session_start();
            </div>
         </div>
     </section>
-    <section class="product">
-        <div class="container">
-            <h1 class="title-h">BOOK ON SALE TODAY</h1>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <a href="#">
-                                <img class="pic-1" src="/img/ID9780099572961@2x.png">
-
-                            </a>
-                            <ul class="social">
-                                <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                            <span class="product-new-label">New</span>
-
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">Faces in the crowd by <a href="#">Valeria Luiselli</a></h3>
-                            <div class="price">
-                                $14.40
-                                <span>$16.00</span>
-                            </div>
-                            <a class="add-to-cart" href="">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <a href="#">
-                                <img class="pic-1" src="./img/ID9261016_M@2x.png">
-
-                            </a>
-                            <ul class="social">
-                                <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                            <span class="product-discount-label">-12%</span>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">Cryogenic systems by <a href="#">Randall F. Barron</a></h3>
-                            <div class="price">
-                                $17.60
-                                <span>$20.00</span>
-                            </div>
-                            <a class="add-to-cart" href="">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <a href="#">
-                                <img class="pic-1" src="./img/ID9780099572961@2x.png">
-
-                            </a>
-                            <ul class="social">
-                                <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-
-                            <span class="product-discount-label">-10%</span>
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">Little Women by <a href="#">Louisa May Alcott</a></h3>
-                            <div class="price">
-                                $14.40
-                                <span>$16.00</span>
-                            </div>
-                            <a class="add-to-cart" href="">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="product-grid4">
-                        <div class="product-image4">
-                            <a href="#">
-                                <img class="pic-1" src="./img/ID9780552174046@2x.png">
-
-                            </a>
-                            <ul class="social">
-                                <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                                <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-
-                        </div>
-                        <div class="product-content">
-                            <h3 class="title">Changing Times by <a href="#">Jack Sheffield</a></h3>
-                            <div class="price">
-                                $14.40
-                                <span>$16.00</span>
-                            </div>
-                            <a class="add-to-cart" href="">ADD TO CART</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
+   
     <section class="Newsletter">
     <div >
 
     <div class="container">
-      <h1>Learn about new offers and get more deals by joining our Newsletter</h1>
+      <h4>Learn about new offers and get more deals by joining our Newsletter</h4>
       <p>Please fill in this form to create an account.</p>
       <hr>
-      <table>
-        
-      <tr>
-      <td><label for="email"><b>Email   </b></label> </td>
-      <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
-      </tr>
-      <tr>
-      <td><label for="psw"><b>Name   </b></label></td>
-      <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
-      </tr>
-      </table>
-      <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-      </label>
-
-      <div class="clearfix">
-        <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
-      </div>
-
-      <table>
-            <tr>
-            <td><label for="email"><b>Email   </b></label> </td>
-            <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
-            </tr>
-      </table>
-      <div>
-          <button type="submit" onclick="deletNewsletter()" class="signupbtn" >Unsubscribe</button>
+      <div >
+          <table>          
+          <tr>
+          <td><label for="email"><b>Email   </b></label> </td>
+          <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
+          </tr>
+          <tr>
+          <td><label for="psw"><b>Name   </b></label></td>
+          <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
+          </tr>
+          </table>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+          </label>
+    
+          <div class="clearfix">
+            <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
+          </div>
       </div>
       <br>
-
+      <div >
+        
     </div>
     </section>
-    <footer>
-        <div class="footer">
-            <p>2020 All Rights Reserved By Group4</p>
+    <footer class="footer">
+        <div style="width: 40%; margin: auto;">
+            <table>
+                <tr>
+                <td><label for="email"><b>Email </b></label> </td>
+                <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
+                </tr>
+            </table>
+           <div>
+           <button type="submit" onclick="deletNewsletter()" class="signupbtn" >Unsubscribe</button>
+           </div>
         </div>
     </footer>
 </body>
