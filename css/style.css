@@ -14,6 +14,13 @@
     padding-top: 60px;
   }
   
+html{
+    max-width: 100%;
+  }
+body{
+    max-width: 100%;
+  }
+
   .modal-content {
     background-color: #fefefe;
     margin: 5px auto;
@@ -191,7 +198,25 @@
       .footer{
         display: none;
       }
+      #table {
+        max-width: 100%;
+        display: grid;
+        border-collapse: collapse;
+      }
+      .cart-style{
+        background-color: #e7e7e7;
+        display: inherit;
+        max-width: 100%;
+        }
+    
+        .cart-tr{
+          display: grid;
+          }
     }
+    .cart-style{
+      background-color: #e7e7e7;
+      }
+
   .Newsletter{
     background-color: #2D6C73;
     position: relative;
@@ -201,7 +226,6 @@
   }
   
   input[type=text], input[type=password] {
-    width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -301,12 +325,70 @@
     display: table;
   }
   
+  @media screen and (max-width: 600px) {
+    #html{
+      max-width: 100%;
+    }
+    #body{
+      max-width: 100%;
+
+    }
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+    .prodact-style{
+      display: grid;
+
+    }
+    #table {
+      max-width: 100%;
+      display: grid;
+      border-collapse: collapse;
+    }
+
+    #td{
+      display: grid;
+    }
+
+
+    #tr{
+      color: #d7292a;
+      display: grid;
+    }
+    .cart-style{
+      background-color: #e7e7e7;
+      display: inherit;
+      max-width: 100%;
+      }
+  
+      .cart-tr{
+        display: grid;
+        }
+  }
+
+    
   @media screen and (max-width: 300px) {
     .cancelbtn, .signupbtn {
        width: 100%;
     }
+    .prodact-style{
+      display: grid;
+    }
+    #table {
+      max-width: 100%;
+      display: grid;
+      border-collapse: collapse;
   }
+  .cart-style{
+    background-color: #e7e7e7;
+    display: inherit;
+    max-width: 100%;
+    }
 
+    .cart-tr{
+      display: grid;
+      }
+  }
 /* ### Table Style ### */
 
 table {
@@ -349,3 +431,13 @@ td, th {
     border: none;
     background: #f1f1f1;
 }
+
+.loginPage{
+  text-align: center;
+  left: 20%;
+  margin-left: 30%;
+  margin-top: 5%;
+  margin-right: 30%;
+  margin-bottom: 5%;
+}
+

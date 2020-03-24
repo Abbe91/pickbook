@@ -1,25 +1,23 @@
 <?php 
-session_start();
-	include('../pickbook/server/handlers/showProduct.php');
-	include('../pickbook/server/handlers/cartHandler.php');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pickbook</title>
-    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script defer src="./js/logic.js"></script>
-</head>
+    <script defer src="./js/users.js"></script>
+    <title>PickBook register</title>
 
-<body >
-    <header>
-        <div class="header">
+</head>
+<body>
+<header>
+    <div class="header">
             <a href="./index.php" class="logo"><img src="./img/logo.png" style="width:180px;" alt=""></a>
             <div class="header-center">
            
@@ -78,29 +76,35 @@ session_start();
             </div>
         </div>
     </header>
-    <div id="catNav" class="topnav">
-    <a onclick="" class="active" href="./index.php">Home</a>
+ <section class="loginPage">
+ <h1 style=" margin-bottom: 0.8em;"> Register </h1>
+ 
+        <div>
+            fulName: <input type="text" name="insertUserName">
+        
+            Email: <input type="text" name="insertUserEmail">
+        
+            address: <input type="text" name="insertUserAddress">
+        
+            phone: <input type="text" name="insertUserPhone">
+         
+            city: <input type="text" name="insertUserCity">
+        
+            Zipcode: <input type="text" name="insertUserZipcode">
+         
+            Post No: <input type="text" name="insertUserPostNo">
+          
+            Country: <input type="text" name="insertUserCountry">
+        
+            Password: <input type="password" name="insertUserPassword">
+            news: <input type="text" name="insertUseris_news_letter">
+            admin: <input type="text" name="insertUserIsAdmin">
+         
+            <button onclick="insertUser();">register</button>
+        </div>    
+</section>
 
-         <?php 
-            getCat();
-            
-         ?>
-    </div>
-    
-    <section class="product">
-        <div class="container">
-        <h1 class="title-h">Latest Products</h1>
-            <div class="row">
-               <?php 
-                 getPro();
-                 getCatPro(); 
-
-                ?> 
-           </div>
-        </div>
-    </section>
-   
-    <section class="Newsletter">
+<section class="Newsletter">
     <div >
 
     <div class="container">

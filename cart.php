@@ -21,17 +21,17 @@ include('../pickbook/server/handlers/cartHandler.php');
 <body>
     <header>
         <div class="header">
-            <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/logo.png" style="width:170px;" alt=""></a>
             <div class="header-center">
 
             </div>
             <div class="header-right">
                 <a><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></a>
                 <a></a>
-                <a class="active" onclick="location.href='login.html'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if (isset($_SESSION["myemail"])) {
-                                                                                                                                                        echo $_SESSION["myemail"];
-                                                                                                                                                    }  ?>login</a>
-                <a class="active" onclick="location.href='logout.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+                <a class="active" onclick="location.href='login.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if(isset($_SESSION["myemail"])){echo $_SESSION["myemail"];}  ?>login</a>
+              <a class="active" onclick="location.href='logout.php'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+              <a class="active" onclick="location.href ='register.php'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Sign up</a>
+              <a class="active" onclick="location.href ='./dashboard/'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Dashboard</a>
                 <div id="id01" class="modal">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
@@ -56,10 +56,6 @@ include('../pickbook/server/handlers/cartHandler.php');
                         </div>
                     </form>
                 </div>
-
-                <a></a>
-                <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
-                <a></a>
                 <a class="active" href="#home">
 
                     <?php
@@ -116,17 +112,17 @@ include('../pickbook/server/handlers/cartHandler.php');
         }
         ?>
         <form action="cart.php" method="post" enctype="multipart/form-data">
-            <table align="center" width="100%" bgcolor="#be457c" style="border-collapse: collapse;">
-                <tr align="center" style="border: 1px solid black;">
-                    <td colspan="5" style="border: 1px solid black;text-align:center;background:#45AFBA;">
-                        <h2 style="color: #fff"> Products you have bought :</h2>
+            <table  width="100%" class="cart-style">
+                <tr class="cart-tr">
+                    <td colspan="5" >
+                        <h2 style="color: #2D6C73; text-align:center;"> Products you have bought :</h2>
                     </td>
                 </tr>
-                <tr style="border: 1px solid black;  ">
-                    <th colspan="2" style="border: 1px solid black;padding: 15px;text-align:right;">Product</th>
-                    <th style="border: 1px solid black;padding: 15px;text-align:right;">Number</th>
-                    <th style="border: 1px solid black;padding: 15px;text-align:right;">Price</th>
-                    <th style="border: 1px solid black;padding: 15px;text-align:right;">Delete</th>
+                <tr class="cart-tr">
+                    <th colspan="2" >Product</th>
+                    <th>Number</th>
+                    <th >Price</th>
+                    <th >Delete</th>
                 </tr>
                 <?php
                 $total    =    0;
@@ -154,14 +150,14 @@ include('../pickbook/server/handlers/cartHandler.php');
                         $single_price    =    $pp_price['unit_price'];
                         $product_id    =    $pp_price['product_id'];
                 ?>
-                        <tr align="center" style="border: 1px solid black;background:#45AFBA;">
-                            <td style="padding: 15px;">
+                        <tr class="cart-tr">
+                            <td >
                                 <?php echo $product_title ?>
                             </td>
-                            <td style="padding: 15px;">
+                            <td >
                                 <img src="<?php echo $product_image ?>" width="60" height="90">
                             </td>
-                            <td style="padding: 15px;">
+                            <td >
                                 <?php
                                 if (isset($_POST['update_cart'])) {
                                     $str_ip = str_replace(".", "", "$ip");
@@ -181,10 +177,10 @@ include('../pickbook/server/handlers/cartHandler.php');
                                 }
                                 ?>
                             </td>
-                            <td style="padding: 15px;">
+                            <td >
                                 <?php echo $single_price ?>
                             </td>
-                            <td style="padding: 15px;">
+                            <td >
                                 <input type="checkbox" name="remove[]" value="<?php echo $product_id; ?>" />
                             </td>
                         </tr>
@@ -192,8 +188,8 @@ include('../pickbook/server/handlers/cartHandler.php');
                     }
                 }
                 ?>
-                <tr align="center" style="border:1px solid black;background:#45AFBA;">
-                    <td style="padding:15px;">
+                <tr class="cart-tr">
+                    <td >
                         <input type="submit" name="continue" value="Continue shopping" />
                     </td>
                     <td></td>
@@ -211,13 +207,13 @@ include('../pickbook/server/handlers/cartHandler.php');
 
                 </tr>
 
-                <tr align="left" style="border:1px solid black;">
+                <tr class="cart-tr">
 
-                    <td colspan="4" style="padding: 15px;">
+                    <td colspan="4" >
                         <b>Total Price:</b>
                     </td>
 
-                    <td style="padding: 15px;">
+                    <td>
                         <b><?php echo $total . " $ "; ?></b>
                     </td>
 
@@ -231,45 +227,47 @@ include('../pickbook/server/handlers/cartHandler.php');
     </div>
     </div>
     <section class="Newsletter">
-        <div>
-            <div class="container">
-                <h1>Learn about new offers and get more deals by joining our Newsletter</h1>
-                <p>Please fill in this form to create an account.</p>
-                <hr>
-                <table>
-                    <tr>
-                        <td><label for="email"><b>Email </b></label> </td>
-                        <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="psw"><b>Name </b></label></td>
-                        <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
-                    </tr>
-                </table>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
+    <div >
 
-                <div class="clearfix">
-                    <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
-                </div>
-
-                <table>
-                    <tr>
-                        <td><label for="email"><b>Email </b></label> </td>
-                        <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
-                    </tr>
-                </table>
-                <div>
-                    <button type="submit" onclick="deletNewsletter()" class="signupbtn">Unsubscribe</button>
-                </div>
-                <br>
-
-            </div>
+    <div class="container">
+      <h4>Learn about new offers and get more deals by joining our Newsletter</h4>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <div >
+          <table>          
+          <tr>
+          <td><label for="email"><b>Email   </b></label> </td>
+          <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
+          </tr>
+          <tr>
+          <td><label for="psw"><b>Name   </b></label></td>
+          <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
+          </tr>
+          </table>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" > Remember me
+          </label>
+    
+          <div class="clearfix">
+            <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
+          </div>
+      </div>
+      <br>
+      <div >
+        
+    </div>
     </section>
-    <footer>
-        <div class="footer">
-            <p>2020 All Rights Reserved By Group4</p>
+    <footer class="footer">
+        <div style="width: 40%; margin: auto;">
+            <table>
+                <tr>
+                <td><label for="email"><b>Email </b></label> </td>
+                <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
+                </tr>
+            </table>
+           <div>
+           <button type="submit" onclick="deletNewsletter()" class="signupbtn" >Unsubscribe</button>
+           </div>
         </div>
     </footer>
 </body>
