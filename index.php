@@ -55,10 +55,6 @@ session_start();
                         </div>
                     </form>
                 </div>
-
-                <a></a>
-                <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
-                <a></a>
                 <a class="active" href="./cart.php">
 
               
