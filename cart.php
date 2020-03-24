@@ -21,17 +21,17 @@ include('../pickbook/server/handlers/cartHandler.php');
 <body>
     <header>
         <div class="header">
-            <a href="./index.php" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/logo.png" style="width:170px;" alt=""></a>
             <div class="header-center">
 
             </div>
             <div class="header-right">
                 <a><input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"></a>
                 <a></a>
-                <a class="active" onclick="location.href='login.html'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if (isset($_SESSION["myemail"])) {
-                                                                                                                                                        echo $_SESSION["myemail"];
-                                                                                                                                                    }  ?>login</a>
-                <a class="active" onclick="location.href='logout.php'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+                <a class="active" onclick="location.href='login.html'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if(isset($_SESSION["myemail"])){echo $_SESSION["myemail"];}  ?>login</a>
+              <a class="active" onclick="location.href='logout.php'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+              <a class="active" onclick="location.href ='register.html'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Sign up</a>
+              <a class="active" onclick="location.href ='./dashboard/'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Dashboard</a>
                 <div id="id01" class="modal">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
@@ -56,10 +56,6 @@ include('../pickbook/server/handlers/cartHandler.php');
                         </div>
                     </form>
                 </div>
-
-                <a></a>
-                <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
-                <a></a>
                 <a class="active" href="#home">
 
                     <?php
@@ -231,45 +227,47 @@ include('../pickbook/server/handlers/cartHandler.php');
     </div>
     </div>
     <section class="Newsletter">
-        <div>
-            <div class="container">
-                <h1>Learn about new offers and get more deals by joining our Newsletter</h1>
-                <p>Please fill in this form to create an account.</p>
-                <hr>
-                <table>
-                    <tr>
-                        <td><label for="email"><b>Email </b></label> </td>
-                        <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
-                    </tr>
-                    <tr>
-                        <td><label for="psw"><b>Name </b></label></td>
-                        <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
-                    </tr>
-                </table>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
+    <div >
 
-                <div class="clearfix">
-                    <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
-                </div>
-
-                <table>
-                    <tr>
-                        <td><label for="email"><b>Email </b></label> </td>
-                        <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
-                    </tr>
-                </table>
-                <div>
-                    <button type="submit" onclick="deletNewsletter()" class="signupbtn">Unsubscribe</button>
-                </div>
-                <br>
-
-            </div>
+    <div class="container">
+      <h4>Learn about new offers and get more deals by joining our Newsletter</h4>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <div >
+          <table>          
+          <tr>
+          <td><label for="email"><b>Email   </b></label> </td>
+          <td> <input type="text" placeholder="Enter Email" name="emailForNewsLetter" required></td>
+          </tr>
+          <tr>
+          <td><label for="psw"><b>Name   </b></label></td>
+          <td><input type="text" placeholder="Enter Your Name" name="nameForNewsLetter" required></td>
+          </tr>
+          </table>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+          </label>
+    
+          <div class="clearfix">
+            <button type="submit" onclick="sendNewsletter()" class="signupbtn">Subscribe</button>
+          </div>
+      </div>
+      <br>
+      <div >
+        
+    </div>
     </section>
-    <footer>
-        <div class="footer">
-            <p>2020 All Rights Reserved By Group4</p>
+    <footer class="footer">
+        <div style="width: 40%; margin: auto;">
+            <table>
+                <tr>
+                <td><label for="email"><b>Email </b></label> </td>
+                <td><input type="text" placeholder="Enter Your email" name="deleteOneEmail"></td>
+                </tr>
+            </table>
+           <div>
+           <button type="submit" onclick="deletNewsletter()" class="signupbtn" >Unsubscribe</button>
+           </div>
         </div>
     </footer>
 </body>

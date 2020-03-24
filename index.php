@@ -29,6 +29,8 @@ session_start();
                 <a></a>
                 <a class="active" onclick="location.href='login.html'"><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt=""> <?php if(isset($_SESSION["myemail"])){echo $_SESSION["myemail"];}  ?>login</a>
               <a class="active" onclick="location.href='logout.php'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">logout</a>
+              <a class="active" onclick="location.href ='register.html'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Sign up</a>
+              <a class="active" onclick="location.href ='./dashboard/'" ><img src="./img/login@2x.png" style="width: 30px; color: aliceblue;" alt="">Dashboard</a>
                 <div id="id01" class="modal">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 
@@ -53,10 +55,6 @@ session_start();
                         </div>
                     </form>
                 </div>
-
-                <a></a>
-                <a class="active" href="#home"><img src="./img/heart_@2x.png" style="width: 30px;" alt=""></a>
-                <a></a>
                 <a class="active" href="./cart.php">
 
               
