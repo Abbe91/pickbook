@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Checkout</title>
-    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="Style.css"/>
-    <link rel="stylesheet" type="text/css" href="checkout.css">
+    <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/checkout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <div class="header">
-            <a href="#default" class="logo"><img src="./img/Group_13_bo_pattern.png" style="width:100px;" alt=""></a>
+            <a href="./index.php" class="logo"><img src="./img/logo.png" style="width:170px;" alt=""></a>
             <div class="header-center">
         </div>
             <div class="header-right">
@@ -53,14 +56,76 @@
           </div>
     </header>
     <div class="topnav">
-        <a class="active" href="#home">Classic</a>
-        <a href="#about">Kids</a>
-        <a href="#contact">Thrillers</a>
-        <a href="#contact">History</a>
-        <a href="#contact">Romance</a>
-        <a href="#contact">Discount</a>
+        <a class="active" href="./index.php">Home</a>
     </div>
-    <br>    
-    
+    <br>
+
+<div id="container">
+<div id="shipping_details">
+<h1>Shopping Cart</h1>
+
+</div>
+<form id="address">
+<fieldset>
+<legend>
+Shipping Information
+</legend>
+<table>
+<tr><td><label for="username">Enter your name:</label></td>
+<td><input type="text" name="username" id="username" maxlength="256" /></td></tr>
+<tr><td><label for="email">Enter your E-Mail address:</label></td>
+<td><input type="email" name="email" id="email" maxlength="256" /></td></tr>
+<tr><td><label for="city">ENTER YOUR ADDRESS:</label></td>
+	<td><input type="text" id="addr" width="500"></td></tr>
+<tr><td><label for="addr">Enter your Address:</label></td>
+<td><input type="text" id="addr" width="500"></td></tr>
+<tr><td><label for="ph">Enter your Phone Number:</label></td>
+<td><input type="tel" id="ph" onChange="check();" width="500"></td></tr>
+<tr><td colspan="2"><input type="submit" value="Place Order"></td></tr>
+</table>
+</fieldset>
+</form>
+
+</div>
+<br>
+<section class="Newsletter">
+    <h2 style="padding: 0.9em;"> Learn about new offers and get more <br>deals by joining our Newsletter</h2>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;  margin-bottom: 2em;">Sign Up</button>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <h1>Learn about new offers and get more deals by joining our Newsletter</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+  </form>
+</div>
+</section>
+
+<footer>
+    <div class="footer">
+        <p>2020 All Rights Reserved By Group4</p>
+    </div>
+</footer>
+
 </body>
 </html>
